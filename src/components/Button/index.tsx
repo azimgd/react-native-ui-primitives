@@ -5,26 +5,55 @@ import type { GetProps } from 'tamagui';
 /**
  * Constants
  */
-const IOS_COLOR_PRIMARY = '#3B82F7';
-const IOS_COLOR_WHITE = '#ffffff';
-const IOS_COLOR_DISABLED = '#D1D1D1';
-const IOS_COLOR_DANGER = '#FF3B30';
+const COLOR_PRIMARY = Platform.select({
+  ios: '#3B82F7',
+  android: '#3B82F7',
+  default: '#3B82F7',
+});
+const COLOR_WHITE = Platform.select({
+  ios: '#ffffff',
+  android: '#ffffff',
+  default: '#ffffff',
+});
+const COLOR_DISABLED = Platform.select({
+  ios: '#D1D1D1',
+  android: '#D1D1D1',
+  default: '#D1D1D1',
+});
+const COLOR_DANGER = Platform.select({
+  ios: '#FF3B30',
+  android: '#FF3B30',
+  default: '#FF3B30',
+});
 
-const ANDROID_COLOR_PRIMARY = '#3B82F7';
-const ANDROID_COLOR_WHITE = '#ffffff';
-const ANDROID_COLOR_DISABLED = '#D1D1D1';
-
-const IOS_BUTTON_HEIGHT = 50;
-const IOS_BUTTON_FONT_SIZE = 17;
-const IOS_BUTTON_FONT_WEIGHT = '600';
-const IOS_BUTTON_FONT_LINE = 22;
-const IOS_BUTTON_BORDER_RADIUS = 12;
-
-const ANDROID_BUTTON_HEIGHT = 50;
-const ANDROID_BUTTON_FONT_SIZE = 17;
-const ANDROID_BUTTON_FONT_WEIGHT = '600';
-const ANDROID_BUTTON_FONT_LINE = 22;
-const ANDROID_BUTTON_BORDER_RADIUS = 12;
+/**
+ * Button props
+ */
+const BUTTON_HEIGHT = Platform.select({
+  ios: 50,
+  android: 40,
+  default: 50,
+});
+const BUTTON_FONT_SIZE = Platform.select({
+  ios: 17,
+  android: 14,
+  default: 17,
+});
+const BUTTON_FONT_WEIGHT = Platform.select({
+  ios: '600',
+  android: '500',
+  default: '600',
+});
+const BUTTON_FONT_LINE = Platform.select({
+  ios: 22,
+  android: 20,
+  default: 22,
+});
+const BUTTON_BORDER_RADIUS = Platform.select({
+  ios: 12,
+  android: 100,
+  default: 12,
+});
 
 /**
  * Per-Platform config
@@ -32,20 +61,12 @@ const ANDROID_BUTTON_BORDER_RADIUS = 12;
 export type ButtonProps = GetProps<typeof TamaguiButton>;
 
 const config = Platform.select<ButtonProps['style']>({
-  ios: {
-    height: IOS_BUTTON_HEIGHT,
-    fontSize: IOS_BUTTON_FONT_SIZE,
-    fontWeight: IOS_BUTTON_FONT_WEIGHT,
-    lineHeight: IOS_BUTTON_FONT_LINE,
-    borderRadius: IOS_BUTTON_BORDER_RADIUS,
-  },
-
-  android: {
-    height: ANDROID_BUTTON_HEIGHT,
-    fontSize: ANDROID_BUTTON_FONT_SIZE,
-    fontWeight: ANDROID_BUTTON_FONT_WEIGHT,
-    lineHeight: ANDROID_BUTTON_FONT_LINE,
-    borderRadius: ANDROID_BUTTON_BORDER_RADIUS,
+  default: {
+    height: BUTTON_HEIGHT,
+    fontSize: BUTTON_FONT_SIZE,
+    fontWeight: BUTTON_FONT_WEIGHT,
+    lineHeight: BUTTON_FONT_LINE,
+    borderRadius: BUTTON_BORDER_RADIUS,
   },
 });
 
@@ -53,18 +74,11 @@ const config = Platform.select<ButtonProps['style']>({
  * Primary
  */
 const configVariantPrimary = Platform.select<ButtonProps['style']>({
-  ios: {
-    backgroundColor: IOS_COLOR_PRIMARY,
+  default: {
+    backgroundColor: COLOR_PRIMARY,
     borderWidth: 1,
-    borderColor: IOS_COLOR_PRIMARY,
-    color: IOS_COLOR_WHITE,
-  },
-
-  android: {
-    backgroundColor: ANDROID_COLOR_PRIMARY,
-    borderWidth: 1,
-    borderColor: ANDROID_COLOR_PRIMARY,
-    color: ANDROID_COLOR_WHITE,
+    borderColor: COLOR_PRIMARY,
+    color: COLOR_WHITE,
   },
 });
 
@@ -72,18 +86,11 @@ const configVariantPrimary = Platform.select<ButtonProps['style']>({
  * Secondary
  */
 const configVariantSecondary = Platform.select<ButtonProps['style']>({
-  ios: {
-    backgroundColor: IOS_COLOR_WHITE,
+  default: {
+    backgroundColor: COLOR_WHITE,
     borderWidth: 1,
-    borderColor: IOS_COLOR_PRIMARY,
-    color: IOS_COLOR_PRIMARY,
-  },
-
-  android: {
-    backgroundColor: IOS_COLOR_WHITE,
-    borderWidth: 1,
-    borderColor: IOS_COLOR_PRIMARY,
-    color: IOS_COLOR_PRIMARY,
+    borderColor: COLOR_PRIMARY,
+    color: COLOR_PRIMARY,
   },
 });
 
@@ -91,18 +98,11 @@ const configVariantSecondary = Platform.select<ButtonProps['style']>({
  * Disabled
  */
 const configVariantDisabled = Platform.select<ButtonProps['style']>({
-  ios: {
-    backgroundColor: IOS_COLOR_DISABLED,
+  default: {
+    backgroundColor: COLOR_DISABLED,
     borderWidth: 1,
-    borderColor: IOS_COLOR_DISABLED,
-    color: IOS_COLOR_WHITE,
-  },
-
-  android: {
-    backgroundColor: ANDROID_COLOR_DISABLED,
-    borderWidth: 1,
-    borderColor: ANDROID_COLOR_DISABLED,
-    color: ANDROID_COLOR_WHITE,
+    borderColor: COLOR_DISABLED,
+    color: COLOR_WHITE,
   },
 });
 
@@ -110,18 +110,11 @@ const configVariantDisabled = Platform.select<ButtonProps['style']>({
  * Danger
  */
 const configVariantDanger = Platform.select<ButtonProps['style']>({
-  ios: {
-    backgroundColor: IOS_COLOR_WHITE,
+  default: {
+    backgroundColor: COLOR_WHITE,
     borderWidth: 1,
-    borderColor: IOS_COLOR_DANGER,
-    color: IOS_COLOR_DANGER,
-  },
-
-  android: {
-    backgroundColor: IOS_COLOR_WHITE,
-    borderWidth: 1,
-    borderColor: IOS_COLOR_DANGER,
-    color: IOS_COLOR_DANGER,
+    borderColor: COLOR_DANGER,
+    color: COLOR_DANGER,
   },
 });
 
