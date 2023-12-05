@@ -1,30 +1,7 @@
 import { Platform, type ViewProps } from 'react-native';
 import { Button as TamaguiButton, styled } from 'tamagui';
 import type { GetProps } from 'tamagui';
-
-/**
- * Constants
- */
-const COLOR_PRIMARY = Platform.select({
-  ios: '#3B82F7',
-  android: '#3B82F7',
-  default: '#3B82F7',
-});
-const COLOR_WHITE = Platform.select({
-  ios: '#ffffff',
-  android: '#ffffff',
-  default: '#ffffff',
-});
-const COLOR_DISABLED = Platform.select({
-  ios: '#D1D1D1',
-  android: '#D1D1D1',
-  default: '#D1D1D1',
-});
-const COLOR_DANGER = Platform.select({
-  ios: '#FF3B30',
-  android: '#FF3B30',
-  default: '#FF3B30',
-});
+import * as colors from '../colors';
 
 /**
  * Button props
@@ -44,11 +21,6 @@ const BUTTON_FONT_WEIGHT = Platform.select({
   android: '500',
   default: '600',
 });
-const BUTTON_FONT_LINE = Platform.select({
-  ios: 22,
-  android: 20,
-  default: 22,
-});
 const BUTTON_BORDER_RADIUS = Platform.select({
   ios: 12,
   android: 100,
@@ -65,7 +37,6 @@ const config = Platform.select<ButtonProps['style']>({
     height: BUTTON_HEIGHT,
     fontSize: BUTTON_FONT_SIZE,
     fontWeight: BUTTON_FONT_WEIGHT,
-    lineHeight: BUTTON_FONT_LINE,
     borderRadius: BUTTON_BORDER_RADIUS,
   },
 });
@@ -75,10 +46,10 @@ const config = Platform.select<ButtonProps['style']>({
  */
 const configVariantPrimary = Platform.select<ButtonProps['style']>({
   default: {
-    backgroundColor: COLOR_PRIMARY,
+    backgroundColor: colors.COLOR_PRIMARY,
     borderWidth: 1,
-    borderColor: COLOR_PRIMARY,
-    color: COLOR_WHITE,
+    borderColor: colors.COLOR_PRIMARY,
+    color: colors.COLOR_WHITE,
   },
 });
 
@@ -87,10 +58,10 @@ const configVariantPrimary = Platform.select<ButtonProps['style']>({
  */
 const configVariantSecondary = Platform.select<ButtonProps['style']>({
   default: {
-    backgroundColor: COLOR_WHITE,
+    backgroundColor: colors.COLOR_WHITE,
     borderWidth: 1,
-    borderColor: COLOR_PRIMARY,
-    color: COLOR_PRIMARY,
+    borderColor: colors.COLOR_PRIMARY,
+    color: colors.COLOR_PRIMARY,
   },
 });
 
@@ -99,10 +70,10 @@ const configVariantSecondary = Platform.select<ButtonProps['style']>({
  */
 const configVariantDisabled = Platform.select<ButtonProps['style']>({
   default: {
-    backgroundColor: COLOR_DISABLED,
+    backgroundColor: colors.COLOR_DISABLED,
     borderWidth: 1,
-    borderColor: COLOR_DISABLED,
-    color: COLOR_WHITE,
+    borderColor: colors.COLOR_DISABLED,
+    color: colors.COLOR_WHITE,
   },
 });
 
@@ -111,10 +82,10 @@ const configVariantDisabled = Platform.select<ButtonProps['style']>({
  */
 const configVariantDanger = Platform.select<ButtonProps['style']>({
   default: {
-    backgroundColor: COLOR_WHITE,
+    backgroundColor: colors.COLOR_WHITE,
     borderWidth: 1,
-    borderColor: COLOR_DANGER,
-    color: COLOR_DANGER,
+    borderColor: colors.COLOR_DANGER,
+    color: colors.COLOR_DANGER,
   },
 });
 
@@ -133,5 +104,5 @@ export const Button = styled(TamaguiButton, {
     disabled: {
       true: configVariantDisabled as ViewProps,
     },
-  } as const,
+  },
 });
