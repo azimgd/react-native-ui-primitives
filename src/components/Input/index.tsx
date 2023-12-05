@@ -61,6 +61,7 @@ const AndroidWrapper = styled(View, {
   borderColor: colors.COLOR_BORDER,
   paddingHorizontal: 12,
   borderRadius: INPUT_BORDER_RADIUS,
+  backgroundColor: INPUT_BACKGROUND_COLOR,
 });
 
 const AndroidInput = styled(TamaguiInput, {
