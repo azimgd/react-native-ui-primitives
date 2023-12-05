@@ -159,7 +159,8 @@
   },
   "dependencies": {
     "@tamagui/config": "^1.79.6",
-    "add": "^2.0.6",
+    "react-native-sfsymbols": "^1.2.1",
+    "react-native-vector-icons": "^10.0.2",
     "tamagui": "^1.79.6",
     "yarn": "^1.22.21"
   }

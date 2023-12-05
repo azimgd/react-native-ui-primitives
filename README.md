@@ -3,7 +3,10 @@
 react-native-default-ui
 
 ## Installation
-This project is based on Tamagui, see installation instructions here: https://tamagui.dev/docs/intro/installation
+This project is based on:
+- Tamagui, instruction: https://tamagui.dev/docs/intro/installation
+- Vector Icons, instruction: https://github.com/oblador/react-native-vector-icons
+- SFSymbols, instruction: https://github.com/birkir/react-native-sfsymbols
 
 ```sh
 npm install react-native-default-ui
