@@ -156,5 +156,11 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "@tamagui/config": "^1.79.6",
+    "add": "^2.0.6",
+    "tamagui": "^1.79.6",
+    "yarn": "^1.22.21"
   }
 }

@@ -1,31 +1,20 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-default-ui';
+import { SafeAreaView } from 'react-native';
+import { tamaguiConfig, Button } from 'react-native-default-ui';
+import { TamaguiProvider, YStack } from 'tamagui';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <TamaguiProvider config={tamaguiConfig}>
+      <SafeAreaView>
+        <YStack space="$4" padding="$4">
+          <Button paint="primary">Primary</Button>
+          <Button paint="secondary">Secondary</Button>
+          <Button disabled>Disabled</Button>
+          <Button paint="danger">Danger</Button>
+        </YStack>
+      </SafeAreaView>
+    </TamaguiProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
