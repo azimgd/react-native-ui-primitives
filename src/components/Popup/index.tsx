@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, type PropsWithChildren } from 'react';
+import React, { useMemo, type PropsWithChildren, type RefObject } from 'react';
 import { StyleSheet } from 'react-native';
 import BottomSheet, {
   BottomSheetBackdrop,
@@ -7,13 +7,14 @@ import BottomSheet, {
 } from '@gorhom/bottom-sheet';
 import { View } from 'tamagui';
 
+export type PopupRef = BottomSheet;
+
 type PopupProps = {
   header: JSX.Element;
+  popupRef: RefObject<PopupRef>;
 };
 
 export const Popup = (props: PropsWithChildren<PopupProps>) => {
-  const bottomSheetRef = useRef<BottomSheet>(null);
-
   /**
    * Backdrop Component
    */
@@ -42,7 +43,7 @@ export const Popup = (props: PropsWithChildren<PopupProps>) => {
 
   return (
     <View style={styles.container}>
-      <BottomSheet ref={bottomSheetRef} {...bottomSheetConfig}>
+      <BottomSheet ref={props.popupRef} {...bottomSheetConfig}>
         <View>{props.header}</View>
         <View>{props.children}</View>
       </BottomSheet>

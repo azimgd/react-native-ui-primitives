@@ -11,6 +11,7 @@ import {
   Contact,
   Header,
   Popup,
+  type PopupRef,
 } from 'react-native-default-ui';
 import { TamaguiProvider, YStack, ScrollView } from 'tamagui';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -18,10 +19,16 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 const Noop = () => null;
 
 export default function App() {
+  const popupRef = React.useRef<PopupRef>(null);
+
+  React.useEffect(() => {
+    popupRef.current?.snapToIndex(0);
+  }, []);
+
   return (
     <GestureHandlerRootView style={styles.gesture}>
       <TamaguiProvider config={tamaguiConfig}>
-        <Popup header={<Header iconLeft={<Noop />} />}>
+        <Popup popupRef={popupRef} header={<Header iconLeft={<Noop />} />}>
           <YStack space="$4" padding="$4">
             <Contact iconLeft={<Noop />} />
             <Contact iconLeft={<Noop />} />
