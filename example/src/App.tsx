@@ -4,6 +4,7 @@ import {
   tamaguiConfig,
   Button,
   Input,
+  GroupedButton,
   GroupedInput,
   GroupedContainer,
   Contact,
@@ -31,6 +32,17 @@ export default function App() {
               label="Full Name"
               helper="This will not be shared with others"
             />
+          </YStack>
+
+          <YStack space="$4" padding="$4">
+            <GroupedContainer>
+              <GroupedButton>John Smith</GroupedButton>
+            </GroupedContainer>
+
+            <GroupedContainer>
+              <GroupedButton paint="primary">Settings</GroupedButton>
+              <GroupedButton paint="danger">Delete account</GroupedButton>
+            </GroupedContainer>
           </YStack>
 
           <YStack space="$4" padding="$4">
