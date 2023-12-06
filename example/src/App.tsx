@@ -4,11 +4,14 @@ import {
   tamaguiConfig,
   Button,
   Input,
-  Inline,
-  InlineContainer,
+  GroupedInput,
+  GroupedContainer,
   Contact,
+  Header,
 } from 'react-native-default-ui';
 import { TamaguiProvider, YStack, ScrollView } from 'tamagui';
+
+const Noop = () => null;
 
 export default function App() {
   return (
@@ -31,14 +34,18 @@ export default function App() {
           </YStack>
 
           <YStack space="$4" padding="$4">
-            <InlineContainer>
-              <Inline label="Firstname" placeholder="Default" />
-              <Inline label="Lastname" placeholder="Default" />
-            </InlineContainer>
+            <GroupedContainer>
+              <GroupedInput label="Firstname" placeholder="Default" />
+              <GroupedInput label="Lastname" placeholder="Default" />
+            </GroupedContainer>
           </YStack>
 
           <YStack space="$4" padding="$4">
-            <Contact />
+            <Header iconLeft={<Noop />} />
+          </YStack>
+
+          <YStack space="$4" padding="$4">
+            <Contact iconLeft={<Noop />} />
           </YStack>
         </ScrollView>
       </SafeAreaView>

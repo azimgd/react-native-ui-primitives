@@ -7,20 +7,25 @@ import { Label } from './Label';
 /**
  * Input props
  */
-const INPUT_HEIGHT = Platform.select({
+const GROUPED_INPUT_HEIGHT = Platform.select({
   ios: 44,
   android: 44,
   default: 44,
 });
-const INPUT_FONT_SIZE = Platform.select({
+const GROUPED_INPUT_FONT_SIZE = Platform.select({
   ios: 17,
   android: 14,
   default: 17,
 });
-const INPUT_FONT_WEIGHT = Platform.select<'400'>({
+const GROUPED_INPUT_FONT_WEIGHT = Platform.select<'400'>({
   ios: '400',
   android: '400',
   default: '400',
+});
+const GROUPED_INPUT_PADDING_HORIZONTAL = Platform.select({
+  ios: 16,
+  android: 16,
+  default: 16,
 });
 
 /**
@@ -34,15 +39,15 @@ export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
 
 const config = Platform.select<InputProps['style']>({
   default: {
-    height: INPUT_HEIGHT,
-    fontSize: INPUT_FONT_SIZE,
-    fontWeight: INPUT_FONT_WEIGHT,
+    height: GROUPED_INPUT_HEIGHT,
+    fontSize: GROUPED_INPUT_FONT_SIZE,
+    fontWeight: GROUPED_INPUT_FONT_WEIGHT,
   },
 });
 
 const Wrapper = styled(XStack, {
   alignItems: 'center',
-  paddingHorizontal: 16,
+  paddingHorizontal: GROUPED_INPUT_PADDING_HORIZONTAL,
 });
 
 const StyledTamaguiInput = TamaguiInput.styleable<CustomInputProps>(
@@ -54,8 +59,8 @@ const StyledTamaguiInput = TamaguiInput.styleable<CustomInputProps>(
   )
 );
 
-export const Inline = styled(StyledTamaguiInput, {
-  name: 'Inline',
+export const GroupedInput = styled(StyledTamaguiInput, {
+  name: 'GroupedInput',
 
   ...(config as InputProps),
 });
