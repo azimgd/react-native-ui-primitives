@@ -7,3 +7,4 @@ export { GroupedContainer } from './components/GroupedContainer';
 export { GroupedSwitch } from './components/GroupedSwitch';
 export { Contact } from './components/Contact';
 export { Header } from './components/Header';
+export { Popup } from './components/Popup';

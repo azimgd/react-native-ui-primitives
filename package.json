@@ -75,7 +75,9 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-gesture-handler": "*",
+    "react-native-reanimated": "*"
   },
   "workspaces": [
     "example"
@@ -158,6 +160,7 @@
     ]
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^4",
     "@tamagui/config": "^1.79.6",
     "react-native-sfsymbols": "^1.2.1",
     "react-native-vector-icons": "^10.0.2",
