@@ -29,3 +29,15 @@ export const COLOR_DANGER = Platform.select({
   android: '#FF3B30',
   default: '#FF3B30',
 });
+
+export const COLOR_GREEN = Platform.select({
+  ios: '#34C759',
+  android: '#34C759',
+  default: '#34C759',
+});
+
+export const COLOR_BLUE = Platform.select({
+  ios: '#D0E4FF',
+  android: '#D0E4FF',
+  default: '#D0E4FF',
+});

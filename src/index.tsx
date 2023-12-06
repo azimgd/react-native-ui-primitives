@@ -4,5 +4,6 @@ export { Input } from './components/Input';
 export { GroupedButton } from './components/GroupedButton';
 export { GroupedInput } from './components/GroupedInput';
 export { GroupedContainer } from './components/GroupedContainer';
+export { GroupedSwitch } from './components/GroupedSwitch';
 export { Contact } from './components/Contact';
 export { Header } from './components/Header';

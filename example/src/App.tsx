@@ -7,6 +7,7 @@ import {
   GroupedButton,
   GroupedInput,
   GroupedContainer,
+  GroupedSwitch,
   Contact,
   Header,
 } from 'react-native-default-ui';
@@ -49,6 +50,13 @@ export default function App() {
             <GroupedContainer>
               <GroupedInput label="Firstname" placeholder="Default" />
               <GroupedInput label="Lastname" placeholder="Default" />
+            </GroupedContainer>
+          </YStack>
+
+          <YStack space="$4" padding="$4">
+            <GroupedContainer>
+              <GroupedSwitch checked>Checked</GroupedSwitch>
+              <GroupedSwitch checked={false}>Unchecked</GroupedSwitch>
             </GroupedContainer>
           </YStack>
 
