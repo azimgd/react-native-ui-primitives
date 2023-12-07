@@ -17,6 +17,7 @@ import {
   type CalendarRef,
   Attachment,
   Onetime,
+  Password,
 } from 'react-native-default-ui';
 import { TamaguiProvider, YStack, ScrollView, XStack, H4 } from 'tamagui';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -54,6 +55,14 @@ export default function App() {
                 placeholder="Default"
                 label="Full Name"
                 helper="This will not be shared with others"
+                iconLeft={<Noop />}
+                iconRight={<Noop />}
+              />
+
+              <Password
+                placeholder="Default"
+                label="Password"
+                helper="Password must include numbers and special characters"
                 iconLeft={<Noop />}
                 iconRight={<Noop />}
               />
@@ -126,8 +135,14 @@ export default function App() {
               <H4>Attachments</H4>
 
               <XStack space={4}>
-                <Attachment source={{ uri: '' }} onActionPress={noopHandler} />
-                <Attachment source={{ uri: '' }} onActionPress={noopHandler} />
+                <Attachment
+                  source={{ uri: 'https://placehold.it/300' }}
+                  onActionPress={noopHandler}
+                />
+                <Attachment
+                  source={{ uri: 'https://placehold.it/300' }}
+                  onActionPress={noopHandler}
+                />
               </XStack>
             </YStack>
           </ScrollView>

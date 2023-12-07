@@ -48,6 +48,7 @@ type CustomInputProps = {
   helper: string;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
+  supplement?: JSX.Element;
 };
 
 export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
@@ -118,6 +119,9 @@ const StyledTamaguiInput = Platform.select({
 
         {props.iconRight ? <IconRight /> : null}
       </Container>
+
+      {props.supplement}
+
       <Helper>{props.helper}</Helper>
     </View>
   )),
@@ -137,6 +141,8 @@ const StyledTamaguiInput = Platform.select({
 
         {props.iconRight ? <IconRight /> : null}
       </Container>
+
+      {props.supplement}
 
       <Helper>{props.helper}</Helper>
     </View>
