@@ -13,3 +13,4 @@ export { Attachment } from './components/Attachment';
 export { Footer } from './components/Footer';
 export { Onetime } from './components/Onetime';
 export { Password } from './components/Password';
+export { InputInline } from './components/InputInline';

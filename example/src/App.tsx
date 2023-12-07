@@ -4,6 +4,7 @@ import {
   tamaguiConfig,
   Button,
   Input,
+  InputInline,
   GroupedButton,
   GroupedInput,
   GroupedContainer,
@@ -63,6 +64,12 @@ export default function App() {
                 placeholder="Default"
                 label="Password"
                 helper="Password must include numbers and special characters"
+                iconLeft={<Noop />}
+                iconRight={<Noop />}
+              />
+
+              <InputInline
+                placeholder="Default"
                 iconLeft={<Noop />}
                 iconRight={<Noop />}
               />
