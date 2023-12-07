@@ -10,6 +10,7 @@ import {
   GroupedSwitch,
   Contact,
   Header,
+  Footer,
   Popup,
   type PopupRef,
   Calendar,
@@ -91,6 +92,10 @@ export default function App() {
 
             <YStack space="$4" padding="$4">
               <Header title="Home Page" iconLeft={<Noop />} />
+            </YStack>
+
+            <YStack space="$4" padding="$4">
+              <Footer title="Home Page" iconLeft={<Noop />} />
             </YStack>
 
             <YStack space="$4" padding="$4">
