@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { Input as TamaguiInput, View, styled } from 'tamagui';
+import { Input as TamaguiInput, View, XStack, YStack, styled } from 'tamagui';
 import type { GetProps } from 'tamagui';
 import { Label } from './Label';
 import { Helper } from './Helper';
@@ -34,6 +34,11 @@ const INPUT_BACKGROUND_COLOR = Platform.select({
   android: colors.COLOR_WHITE,
   default: colors.COLOR_WHITE,
 });
+const INPUT_ICON_HEIGHT = Platform.select({
+  ios: 22,
+  android: 24,
+  default: 22,
+});
 
 /**
  * Per-Platform config
@@ -41,6 +46,8 @@ const INPUT_BACKGROUND_COLOR = Platform.select({
 type CustomInputProps = {
   label: string;
   helper: string;
+  iconLeft?: JSX.Element;
+  iconRight?: JSX.Element;
 };
 
 export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
@@ -55,19 +62,44 @@ const config = Platform.select<InputProps['style']>({
   },
 });
 
-const AndroidWrapper = styled(View, {
+const Container = styled(XStack, {
   height: 50,
   borderWidth: 1,
   borderColor: colors.COLOR_BORDER,
   paddingHorizontal: 12,
   borderRadius: INPUT_BORDER_RADIUS,
   backgroundColor: INPUT_BACKGROUND_COLOR,
+  alignItems: 'center',
+  overflow: 'hidden',
 });
 
-const AndroidInput = styled(TamaguiInput, {
+const Wrapper = styled(YStack, {
+  flex: 1,
+});
+
+const InputAndroid = styled(TamaguiInput, {
   unstyled: true,
   lineHeight: 20,
   height: 20,
+});
+
+const InputIOS = styled(TamaguiInput, {
+  unstyled: true,
+  flex: 1,
+});
+
+const IconLeft = styled(View, {
+  width: INPUT_ICON_HEIGHT,
+  height: INPUT_ICON_HEIGHT,
+  backgroundColor: 'red',
+  marginRight: 8,
+});
+
+const IconRight = styled(View, {
+  width: INPUT_ICON_HEIGHT,
+  height: INPUT_ICON_HEIGHT,
+  backgroundColor: 'red',
+  marginLeft: 8,
 });
 
 const StyledTamaguiInput = Platform.select({
@@ -77,7 +109,15 @@ const StyledTamaguiInput = Platform.select({
   default: TamaguiInput.styleable<CustomInputProps>((props, ref) => (
     <View>
       <Label>{props.label}</Label>
-      <TamaguiInput ref={ref} {...props} />
+      <Container>
+        {props.iconLeft ? <IconLeft /> : null}
+
+        <Wrapper>
+          <InputIOS ref={ref} {...props} />
+        </Wrapper>
+
+        {props.iconRight ? <IconRight /> : null}
+      </Container>
       <Helper>{props.helper}</Helper>
     </View>
   )),
@@ -87,10 +127,16 @@ const StyledTamaguiInput = Platform.select({
    */
   android: TamaguiInput.styleable<CustomInputProps>((props, ref) => (
     <View>
-      <AndroidWrapper>
-        <Label>{props.label}</Label>
-        <AndroidInput ref={ref} {...props} />
-      </AndroidWrapper>
+      <Container>
+        {props.iconLeft ? <IconLeft /> : null}
+
+        <Wrapper>
+          <Label>{props.label}</Label>
+          <InputAndroid ref={ref} {...props} />
+        </Wrapper>
+
+        {props.iconRight ? <IconRight /> : null}
+      </Container>
 
       <Helper>{props.helper}</Helper>
     </View>

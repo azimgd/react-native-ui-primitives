@@ -54,6 +54,8 @@ export default function App() {
                 placeholder="Default"
                 label="Full Name"
                 helper="This will not be shared with others"
+                iconLeft={<Noop />}
+                iconRight={<Noop />}
               />
             </YStack>
 

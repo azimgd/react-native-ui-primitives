@@ -15,6 +15,11 @@ const LABEL_FONT_SIZE = Platform.select({
   android: 10,
   default: 15,
 });
+const LABEL_FONT_LINE_HEIGHT = Platform.select({
+  ios: 20,
+  android: 12,
+  default: 20,
+});
 const LABEL_FONT_WEIGHT = Platform.select({
   ios: '500',
   android: '400',
@@ -37,6 +42,7 @@ const config = Platform.select<LabelProps['style']>({
     fontSize: LABEL_FONT_SIZE,
     fontWeight: LABEL_FONT_WEIGHT,
     paddingBottom: LABEL_PADDING_BOTTOM,
+    lineHeight: LABEL_FONT_LINE_HEIGHT,
   },
 });
 
