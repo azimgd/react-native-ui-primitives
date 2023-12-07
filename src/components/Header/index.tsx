@@ -41,6 +41,7 @@ const HEADER_WRAPPER_ALIGN = Platform.select<'center' | 'flex-start'>({
  * Per-Platform config
  */
 type CustomHeaderProps = {
+  title: string;
   iconLeft: JSX.Element;
 };
 
@@ -79,7 +80,7 @@ export const Header = (props: PropsWithChildren<CustomHeaderProps>) => {
       <IconLeft>{props.iconLeft}</IconLeft>
 
       <Wrapper>
-        <Title>Home Page</Title>
+        <Title>{props.title}</Title>
       </Wrapper>
 
       <IconRight />

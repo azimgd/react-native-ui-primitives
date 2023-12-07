@@ -1,5 +1,4 @@
 import React, { useMemo, type PropsWithChildren, type RefObject } from 'react';
-import { StyleSheet } from 'react-native';
 import BottomSheet, {
   BottomSheetBackdrop,
   type BottomSheetProps,
@@ -29,31 +28,27 @@ export const Popup = (props: PropsWithChildren<PopupProps>) => {
     []
   );
 
+  const handleSheetChanges = React.useCallback((index: number) => {
+    index;
+  }, []);
+
   /**
    * Bottom Sheet Config
    */
   const bottomSheetConfig = useMemo<Omit<BottomSheetProps, 'children'>>(
     () => ({
-      index: 0,
-      snapPoints: ['60%'],
+      index: -1,
+      snapPoints: ['40%'],
       backdropComponent: renderBackdrop,
+      onChange: handleSheetChanges,
     }),
-    [renderBackdrop]
+    [renderBackdrop, handleSheetChanges]
   );
 
   return (
-    <View style={styles.container}>
-      <BottomSheet ref={props.popupRef} {...bottomSheetConfig}>
-        <View>{props.header}</View>
-        <View>{props.children}</View>
-      </BottomSheet>
-    </View>
+    <BottomSheet ref={props.popupRef} {...bottomSheetConfig}>
+      <View>{props.header}</View>
+      <View>{props.children}</View>
+    </BottomSheet>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: 1,
-  },
-});

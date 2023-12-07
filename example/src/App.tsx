@@ -12,6 +12,8 @@ import {
   Header,
   Popup,
   type PopupRef,
+  Calendar,
+  type CalendarRef,
 } from 'react-native-default-ui';
 import { TamaguiProvider, YStack, ScrollView } from 'tamagui';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -19,25 +21,25 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 const Noop = () => null;
 
 export default function App() {
+  const calendarRef = React.useRef<CalendarRef>(null);
   const popupRef = React.useRef<PopupRef>(null);
 
-  React.useEffect(() => {
-    popupRef.current?.snapToIndex(0);
+  const toggleCalendar = React.useCallback(() => {
+    calendarRef.current?.open();
+    popupRef.current?.expand();
   }, []);
 
   return (
     <GestureHandlerRootView style={styles.gesture}>
       <TamaguiProvider config={tamaguiConfig}>
-        <Popup popupRef={popupRef} header={<Header iconLeft={<Noop />} />}>
-          <YStack space="$4" padding="$4">
-            <Contact iconLeft={<Noop />} />
-            <Contact iconLeft={<Noop />} />
-            <Contact iconLeft={<Noop />} />
-          </YStack>
-        </Popup>
-
         <SafeAreaView style={styles.safearea}>
           <ScrollView style={styles.container}>
+            <YStack space="$4" padding="$4">
+              <Button paint="secondary" onPress={toggleCalendar}>
+                Open Calendar
+              </Button>
+            </YStack>
+
             <YStack space="$4" padding="$4">
               <Button paint="primary">Primary</Button>
               <Button paint="secondary">Secondary</Button>
@@ -79,7 +81,7 @@ export default function App() {
             </YStack>
 
             <YStack space="$4" padding="$4">
-              <Header iconLeft={<Noop />} />
+              <Header title="Home Page" iconLeft={<Noop />} />
             </YStack>
 
             <YStack space="$4" padding="$4">
@@ -87,6 +89,23 @@ export default function App() {
             </YStack>
           </ScrollView>
         </SafeAreaView>
+
+        <Calendar
+          calendarRef={calendarRef}
+          onChange={console.log}
+          value={new Date()}
+        />
+
+        <Popup
+          popupRef={popupRef}
+          header={<Header title="Contacts" iconLeft={<Noop />} />}
+        >
+          <YStack space="$4" padding="$4">
+            <Contact iconLeft={<Noop />} />
+            <Contact iconLeft={<Noop />} />
+            <Contact iconLeft={<Noop />} />
+          </YStack>
+        </Popup>
       </TamaguiProvider>
     </GestureHandlerRootView>
   );
