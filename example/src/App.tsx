@@ -14,11 +14,13 @@ import {
   type PopupRef,
   Calendar,
   type CalendarRef,
+  Attachment,
 } from 'react-native-default-ui';
-import { TamaguiProvider, YStack, ScrollView } from 'tamagui';
+import { TamaguiProvider, YStack, ScrollView, XStack } from 'tamagui';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Noop = () => null;
+const noopHandler = () => null;
 
 export default function App() {
   const calendarRef = React.useRef<CalendarRef>(null);
@@ -38,6 +40,13 @@ export default function App() {
               <Button paint="secondary" onPress={toggleCalendar}>
                 Open Calendar
               </Button>
+            </YStack>
+
+            <YStack space="$4" padding="$4">
+              <XStack space={4}>
+                <Attachment source={{ uri: '' }} onActionPress={noopHandler} />
+                <Attachment source={{ uri: '' }} onActionPress={noopHandler} />
+              </XStack>
             </YStack>
 
             <YStack space="$4" padding="$4">
@@ -92,7 +101,7 @@ export default function App() {
 
         <Calendar
           calendarRef={calendarRef}
-          onChange={console.log}
+          onChange={noopHandler}
           value={new Date()}
         />
 
