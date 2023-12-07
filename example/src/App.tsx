@@ -16,6 +16,7 @@ import {
   Calendar,
   type CalendarRef,
   Attachment,
+  Onetime,
 } from 'react-native-default-ui';
 import { TamaguiProvider, YStack, ScrollView, XStack } from 'tamagui';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -100,6 +101,10 @@ export default function App() {
 
             <YStack space="$4" padding="$4">
               <Contact iconLeft={<Noop />} />
+            </YStack>
+
+            <YStack space="$4" padding="$4">
+              <Onetime numberOfDigits={6} />
             </YStack>
           </ScrollView>
         </SafeAreaView>

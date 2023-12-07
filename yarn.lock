@@ -16229,6 +16229,7 @@ __metadata:
     react: 18.2.0
     react-native: 0.72.6
     react-native-builder-bob: ^0.20.0
+    react-native-otp-entry: ^1.3.0
     react-native-sfsymbols: ^1.2.1
     react-native-vector-icons: ^10.0.2
     release-it: ^15.0.0
@@ -16256,6 +16257,13 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 1aec3d71c5fd3b8087e613708ee77a0ce7a1ac2bc87f5a6a22529300795b48aaa2359bcba7309f2c14f9de1ca1ffa4904d06b3cb7263820f657a4469976aecb3
+  languageName: node
+  linkType: hard
+
+"react-native-otp-entry@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "react-native-otp-entry@npm:1.3.0"
+  checksum: 06b5adbf6af5c6982308f5d599e8559e1535003640505bf895ff8f89cdac86b31a16028d636f7afc92a4f292690b1965b2175d1c161219003ab0bd269954ec69
   languageName: node
   linkType: hard
 
