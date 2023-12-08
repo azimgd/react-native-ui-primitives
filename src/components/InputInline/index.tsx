@@ -49,6 +49,7 @@ const IconRight = styled(View, {
 type CustomInputProps = {
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
+  overlap?: JSX.Element;
 };
 
 export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
@@ -66,6 +67,10 @@ const Container = styled(XStack, {
   alignItems: 'center',
 });
 
+const Wrapper = styled(XStack, {
+  flex: 1,
+});
+
 const Input = styled(TamaguiInput, {
   unstyled: true,
   flex: 1,
@@ -75,7 +80,11 @@ const StyledTamaguiInput = TamaguiInput.styleable<CustomInputProps>(
   (props, ref) => (
     <Container>
       {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
-      <Input ref={ref} {...props} />
+      {props.overlap ? (
+        <Wrapper>{props.overlap}</Wrapper>
+      ) : (
+        <Input ref={ref} {...props} />
+      )}
       {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
     </Container>
   )

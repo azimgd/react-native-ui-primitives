@@ -41,3 +41,9 @@ export const COLOR_BLUE = Platform.select({
   android: '#D0E4FF',
   default: '#D0E4FF',
 });
+
+export const COLOR_ORANGE = Platform.select({
+  ios: '#F49E4C',
+  android: '#F49E4C',
+  default: '#F49E4C',
+});
