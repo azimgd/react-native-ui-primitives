@@ -49,6 +49,7 @@ type CustomInputProps = {
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
   supplement?: JSX.Element;
+  overlap?: JSX.Element;
 };
 
 export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
@@ -115,9 +116,13 @@ const StyledTamaguiInput = Platform.select({
       <Container>
         {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
-        <Wrapper>
-          <InputIOS ref={ref} {...props} />
-        </Wrapper>
+        {props.overlap ? <Wrapper>{props.overlap}</Wrapper> : null}
+
+        {!props.overlap ? (
+          <Wrapper>
+            <InputIOS ref={ref} {...props} />
+          </Wrapper>
+        ) : null}
 
         {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
       </Container>
@@ -136,10 +141,14 @@ const StyledTamaguiInput = Platform.select({
       <Container>
         {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
-        <Wrapper>
-          <Label>{props.label}</Label>
-          <InputAndroid ref={ref} {...props} />
-        </Wrapper>
+        {props.overlap ? <Wrapper>{props.overlap}</Wrapper> : null}
+
+        {!props.overlap ? (
+          <Wrapper>
+            <Label>{props.label}</Label>
+            <InputAndroid ref={ref} {...props} />
+          </Wrapper>
+        ) : null}
 
         {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
       </Container>

@@ -20,6 +20,7 @@ import {
   Onetime,
   Password,
   Recipient,
+  Chip,
 } from 'react-native-ui-primitives';
 import {
   TamaguiProvider,
@@ -70,6 +71,13 @@ export default function App() {
                 iconRight={<Text color="$blue10">Forward</Text>}
               />
 
+              <Input
+                placeholder="Default"
+                label="Birthdate"
+                helper="This will not be shared with others"
+                overlap={<Chip>Feb 24, 1990</Chip>}
+              />
+
               <Password
                 placeholder="Default"
                 label="Password"
@@ -111,6 +119,12 @@ export default function App() {
 
               <GroupedContainer>
                 <GroupedInput label="Firstname" placeholder="Default" />
+                <GroupedInput label="Lastname" placeholder="Default" />
+                <GroupedInput
+                  label="Birthdate"
+                  placeholder="Default"
+                  overlap={<Chip>Feb 24, 1990</Chip>}
+                />
                 <GroupedInput label="Lastname" placeholder="Default" />
               </GroupedContainer>
             </YStack>

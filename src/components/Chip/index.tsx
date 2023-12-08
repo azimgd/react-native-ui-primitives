@@ -1,8 +1,9 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Pressable } from 'react-native';
 import { Text, View, styled } from 'tamagui';
 import type { GetProps } from 'tamagui';
 import * as colors from '../colors';
+import type { PressableProps } from 'react-native';
 
 /**
  * Chip props
@@ -31,9 +32,18 @@ const CHIP_BORDER_RADIUS = Platform.select({
 /**
  * Per-Platform config
  */
-export type ChipProps = GetProps<typeof View>;
+type CustomChipProps = {
+  onPress?: PressableProps['onPress'];
+};
+
+export type ChipProps = GetProps<typeof View> & CustomChipProps;
 
 export const Container = styled(View, {
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+});
+
+export const Wrapper = styled(View, {
   padding: CHIP_PADDING_TOP,
   borderRadius: CHIP_BORDER_RADIUS,
   backgroundColor: `${colors.COLOR_PRIMARY}15`,
@@ -45,8 +55,12 @@ export const Label = styled(Text, {
   color: colors.COLOR_PRIMARY,
 });
 
-export const Chip = Container.styleable((props, ref) => (
-  <Container ref={ref} {...props}>
-    <Label>{props.children}</Label>
-  </Container>
+export const Chip = Wrapper.styleable<CustomChipProps>((props, ref) => (
+  <Pressable onPress={props.onPress}>
+    <Container>
+      <Wrapper ref={ref} {...props}>
+        <Label>{props.children}</Label>
+      </Wrapper>
+    </Container>
+  </Pressable>
 ));

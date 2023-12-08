@@ -69,7 +69,7 @@ const Wrapper = styled(XStack, {
 });
 
 const IconRight = styled(View, {
-  width: GROUPED_BUTTON_HEIGHT,
+  minWidth: GROUPED_BUTTON_HEIGHT,
   height: GROUPED_BUTTON_HEIGHT,
   justifyContent: 'center',
   alignItems: 'flex-end',

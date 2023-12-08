@@ -2,7 +2,6 @@ import React from 'react';
 import { InputInline } from '../InputInline';
 import * as validator from './validator';
 import { Chip } from '../Chip';
-import { Pressable } from 'react-native';
 
 export const Recipient = InputInline.styleable((props, ref) => {
   const [value, setValue] = React.useState(props.value);
@@ -62,9 +61,7 @@ export const Recipient = InputInline.styleable((props, ref) => {
   const renderOverlap = React.useMemo(
     () =>
       recipient ? (
-        <Pressable onPress={handleRecipientPress}>
-          <Chip>{recipient}</Chip>
-        </Pressable>
+        <Chip onPress={handleRecipientPress}>{recipient}</Chip>
       ) : undefined,
     [recipient, handleRecipientPress]
   );

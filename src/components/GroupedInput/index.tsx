@@ -33,19 +33,20 @@ const GROUPED_INPUT_PADDING_HORIZONTAL = Platform.select({
  */
 type CustomInputProps = {
   label: string;
+  overlap?: JSX.Element;
 };
 
 export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
 
 const config = Platform.select<InputProps['style']>({
   default: {
-    height: GROUPED_INPUT_HEIGHT,
     fontSize: GROUPED_INPUT_FONT_SIZE,
     fontWeight: GROUPED_INPUT_FONT_WEIGHT,
   },
 });
 
 const Wrapper = styled(XStack, {
+  height: GROUPED_INPUT_HEIGHT,
   alignItems: 'center',
   paddingHorizontal: GROUPED_INPUT_PADDING_HORIZONTAL,
 });
@@ -54,7 +55,8 @@ const StyledTamaguiInput = TamaguiInput.styleable<CustomInputProps>(
   (props, ref) => (
     <Wrapper>
       <Label>{props.label}</Label>
-      <TamaguiInput ref={ref} {...props} unstyled flex={1} />
+
+      {props.overlap || <TamaguiInput ref={ref} {...props} unstyled flex={1} />}
     </Wrapper>
   )
 );

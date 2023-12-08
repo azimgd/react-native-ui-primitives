@@ -15,3 +15,4 @@ export { Onetime } from './components/Onetime';
 export { Password } from './components/Password';
 export { InputInline } from './components/InputInline';
 export { Recipient } from './components/Recipient';
+export { Chip } from './components/Chip';
