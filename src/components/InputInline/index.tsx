@@ -30,15 +30,17 @@ const INPUT_ICON_HEIGHT = Platform.select({
 const IconLeft = styled(View, {
   width: INPUT_ICON_HEIGHT,
   height: INPUT_ICON_HEIGHT,
-  backgroundColor: 'red',
   marginRight: 8,
+  justifyContent: 'center',
+  alignItems: 'flex-start',
 });
 
 const IconRight = styled(View, {
   width: INPUT_ICON_HEIGHT,
   height: INPUT_ICON_HEIGHT,
-  backgroundColor: 'red',
   marginLeft: 8,
+  justifyContent: 'center',
+  alignItems: 'flex-end',
 });
 
 /**
@@ -72,9 +74,9 @@ const Input = styled(TamaguiInput, {
 const StyledTamaguiInput = TamaguiInput.styleable<CustomInputProps>(
   (props, ref) => (
     <Container>
-      {props.iconLeft ? <IconLeft /> : null}
+      {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
       <Input ref={ref} {...props} />
-      {props.iconRight ? <IconRight /> : null}
+      {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
     </Container>
   )
 );

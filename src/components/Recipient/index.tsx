@@ -35,6 +35,7 @@ export const Recipient = InputInline.styleable((props, ref) => {
       {...props}
       onChangeText={handleChangeText}
       color={color}
+      autoCapitalize="none"
     />
   );
 });

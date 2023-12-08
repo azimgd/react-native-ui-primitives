@@ -92,15 +92,17 @@ const InputIOS = styled(TamaguiInput, {
 const IconLeft = styled(View, {
   width: INPUT_ICON_HEIGHT,
   height: INPUT_ICON_HEIGHT,
-  backgroundColor: 'red',
   marginRight: 8,
+  justifyContent: 'center',
+  alignItems: 'flex-start',
 });
 
 const IconRight = styled(View, {
   width: INPUT_ICON_HEIGHT,
   height: INPUT_ICON_HEIGHT,
-  backgroundColor: 'red',
   marginLeft: 8,
+  justifyContent: 'center',
+  alignItems: 'flex-end',
 });
 
 const StyledTamaguiInput = Platform.select({
@@ -111,13 +113,13 @@ const StyledTamaguiInput = Platform.select({
     <View>
       <Label>{props.label}</Label>
       <Container>
-        {props.iconLeft ? <IconLeft /> : null}
+        {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
         <Wrapper>
           <InputIOS ref={ref} {...props} />
         </Wrapper>
 
-        {props.iconRight ? <IconRight /> : null}
+        {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
       </Container>
 
       {props.supplement}
@@ -132,14 +134,14 @@ const StyledTamaguiInput = Platform.select({
   android: TamaguiInput.styleable<CustomInputProps>((props, ref) => (
     <View>
       <Container>
-        {props.iconLeft ? <IconLeft /> : null}
+        {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
         <Wrapper>
           <Label>{props.label}</Label>
           <InputAndroid ref={ref} {...props} />
         </Wrapper>
 
-        {props.iconRight ? <IconRight /> : null}
+        {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
       </Container>
 
       {props.supplement}

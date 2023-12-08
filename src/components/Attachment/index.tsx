@@ -44,7 +44,6 @@ const Content = styled(Image, {
   width: ATTACHMENT_HEIGHT,
   height: ATTACHMENT_HEIGHT,
   borderRadius: ATTACHMENT_BORDER_RADIUS,
-  backgroundColor: 'red',
 });
 
 const Action = styled(View, {

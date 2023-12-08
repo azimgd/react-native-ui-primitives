@@ -21,7 +21,16 @@ import {
   Password,
   Recipient,
 } from 'react-native-default-ui';
-import { TamaguiProvider, YStack, ScrollView, XStack, H4 } from 'tamagui';
+import {
+  TamaguiProvider,
+  YStack,
+  ScrollView,
+  XStack,
+  H4,
+  Text,
+  Circle,
+  View,
+} from 'tamagui';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Noop = () => null;
@@ -57,28 +66,28 @@ export default function App() {
                 placeholder="Default"
                 label="Full Name"
                 helper="This will not be shared with others"
-                iconLeft={<Noop />}
-                iconRight={<Noop />}
+                iconLeft={<Text color="$blue10">Back</Text>}
+                iconRight={<Text color="$blue10">Forward</Text>}
               />
 
               <Password
                 placeholder="Default"
                 label="Password"
                 helper="Password must include numbers and special characters"
-                iconLeft={<Noop />}
-                iconRight={<Noop />}
+                iconLeft={<Text color="$blue10">Back</Text>}
+                iconRight={<Text color="$blue10">Forward</Text>}
               />
 
               <InputInline
                 placeholder="Default"
-                iconLeft={<Noop />}
-                iconRight={<Noop />}
+                iconLeft={<Text color="$blue10">Back</Text>}
+                iconRight={<Text color="$blue10">Forward</Text>}
               />
 
               <Recipient
                 placeholder="Recipient"
-                iconLeft={<Noop />}
-                iconRight={<Noop />}
+                iconLeft={<Text color="$blue10">Back</Text>}
+                iconRight={<Text color="$blue10">Forward</Text>}
               />
             </YStack>
 
@@ -116,19 +125,34 @@ export default function App() {
             <YStack space="$4" padding="$4">
               <H4>Headers</H4>
 
-              <Header title="Home Page" iconLeft={<Noop />} />
+              <Header
+                title="Home Page"
+                iconLeft={<Text color="$blue10">Back</Text>}
+                iconRight={<Text color="$blue10">Forward</Text>}
+              />
             </YStack>
 
             <YStack space="$4" padding="$4">
               <H4>Footers</H4>
 
-              <Footer title="Home Page" iconLeft={<Noop />} />
+              <Footer
+                title="Home Page"
+                iconLeft={<Text color="$blue10">Back</Text>}
+                iconRight={<Text color="$blue10">Forward</Text>}
+              />
             </YStack>
 
             <YStack space="$4" padding="$4">
               <H4>Contacts</H4>
 
-              <Contact iconLeft={<Noop />} />
+              <Contact
+                title="bob@gmail.com"
+                subtitle={['4 messages', '3 items']}
+                iconLeft={<Circle size={44} backgroundColor="$blue10" />}
+                iconRight={
+                  <View width={18} height={44} backgroundColor="$blue10" />
+                }
+              />
             </YStack>
 
             <YStack space="$4" padding="$4">
@@ -173,9 +197,21 @@ export default function App() {
           header={<Header title="Contacts" iconLeft={<Noop />} />}
         >
           <YStack space="$4" padding="$4">
-            <Contact iconLeft={<Noop />} />
-            <Contact iconLeft={<Noop />} />
-            <Contact iconLeft={<Noop />} />
+            <Contact
+              title="bob@gmail.com"
+              subtitle={['4 messages', '3 items']}
+              iconLeft={<Noop />}
+            />
+            <Contact
+              title="bob@gmail.com"
+              subtitle={['4 messages', '3 items']}
+              iconLeft={<Noop />}
+            />
+            <Contact
+              title="bob@gmail.com"
+              subtitle={['4 messages', '3 items']}
+              iconLeft={<Noop />}
+            />
           </YStack>
         </Popup>
       </TamaguiProvider>

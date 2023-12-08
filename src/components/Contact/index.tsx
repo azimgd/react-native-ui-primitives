@@ -45,23 +45,24 @@ const CONTACT_SUBTITLE_FONT_WEIGHT = Platform.select<'400'>({
  * Per-Platform config
  */
 type CustomContactProps = {
-  iconLeft: JSX.Element;
+  title: string | JSX.Element;
+  subtitle: (string | JSX.Element)[];
+  iconLeft?: JSX.Element;
+  iconRight?: JSX.Element;
 };
 
 const IconLeft = styled(View, {
   width: CONTACT_ICON_HEIGHT,
   height: CONTACT_ICON_HEIGHT,
-  backgroundColor: 'red',
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'flex-start',
 });
 
 const IconRight = styled(View, {
   width: CONTACT_ICON_HEIGHT / 2,
   height: CONTACT_ICON_HEIGHT,
-  backgroundColor: 'red',
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'flex-end',
 });
 
 const Wrapper = styled(YStack, {
@@ -90,18 +91,19 @@ const SubTitleWrapper = styled(XStack, {
 export const Contact = (props: PropsWithChildren<CustomContactProps>) => {
   return (
     <XStack>
-      <IconLeft>{props.iconLeft}</IconLeft>
+      {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
       <Wrapper>
-        <Title>bob@gmail.com</Title>
+        <Title>{props.title}</Title>
 
         <SubTitleWrapper>
-          <SubTitle>4 calls</SubTitle>
-          <SubTitle>2 messages</SubTitle>
+          {props.subtitle.map((item, key) => (
+            <SubTitle key={key}>{item}</SubTitle>
+          ))}
         </SubTitleWrapper>
       </Wrapper>
 
-      <IconRight />
+      {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
     </XStack>
   );
 };

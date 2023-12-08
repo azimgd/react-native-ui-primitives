@@ -22,23 +22,26 @@ const FOOTER_HEIGHT = Platform.select({
  */
 type CustomFooterProps = {
   title: string;
-  iconLeft: JSX.Element;
+  iconLeft?: JSX.Element;
+  iconRight?: JSX.Element;
 };
 
 const IconLeft = styled(View, {
-  width: FOOTER_ICON_HEIGHT,
+  position: 'absolute',
+  left: 0,
+  minWidth: FOOTER_ICON_HEIGHT,
   height: FOOTER_ICON_HEIGHT,
-  backgroundColor: 'red',
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'flex-start',
 });
 
 const IconRight = styled(View, {
-  width: FOOTER_ICON_HEIGHT,
+  position: 'absolute',
+  right: 0,
+  minWidth: FOOTER_ICON_HEIGHT,
   height: FOOTER_ICON_HEIGHT,
-  backgroundColor: 'red',
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'flex-end',
 });
 
 const Container = styled(XStack, {
@@ -56,11 +59,11 @@ const Wrapper = styled(YStack, {
 export const Footer = (props: PropsWithChildren<CustomFooterProps>) => {
   return (
     <Container>
-      <IconLeft>{props.iconLeft}</IconLeft>
+      {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
       <Wrapper />
 
-      <IconRight />
+      {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
     </Container>
   );
 };

@@ -42,27 +42,31 @@ const HEADER_WRAPPER_ALIGN = Platform.select<'center' | 'flex-start'>({
  */
 type CustomHeaderProps = {
   title: string;
-  iconLeft: JSX.Element;
+  iconLeft?: JSX.Element;
+  iconRight?: JSX.Element;
 };
 
 const IconLeft = styled(View, {
-  width: HEADER_ICON_HEIGHT,
+  position: 'absolute',
+  left: 0,
+  minWidth: HEADER_ICON_HEIGHT,
   height: HEADER_ICON_HEIGHT,
-  backgroundColor: 'red',
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'flex-start',
 });
 
 const IconRight = styled(View, {
-  width: HEADER_ICON_HEIGHT,
+  position: 'absolute',
+  right: 0,
+  minWidth: HEADER_ICON_HEIGHT,
   height: HEADER_ICON_HEIGHT,
-  backgroundColor: 'red',
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'flex-end',
 });
 
 const Wrapper = styled(YStack, {
   flex: 1,
+  height: HEADER_ICON_HEIGHT,
   paddingHorizontal: HEADER_WRAPPER_PADDING_HORIZONTAL,
   paddingVertical: HEADER_WRAPPER_PADDING_VERTICAL,
   justifyContent: 'center',
@@ -77,13 +81,13 @@ const Title = styled(SizableText, {
 export const Header = (props: PropsWithChildren<CustomHeaderProps>) => {
   return (
     <XStack>
-      <IconLeft>{props.iconLeft}</IconLeft>
+      {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
       <Wrapper>
         <Title>{props.title}</Title>
       </Wrapper>
 
-      <IconRight />
+      {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
     </XStack>
   );
 };
