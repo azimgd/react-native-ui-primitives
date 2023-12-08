@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-default-ui": ["./src/index"]
+      "react-native-ui-primitives": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

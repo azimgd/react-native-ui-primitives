@@ -20,7 +20,7 @@ import {
   Onetime,
   Password,
   Recipient,
-} from 'react-native-default-ui';
+} from 'react-native-ui-primitives';
 import {
   TamaguiProvider,
   YStack,

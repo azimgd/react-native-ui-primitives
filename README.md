@@ -1,6 +1,6 @@
-# react-native-default-ui
+# react-native-ui-primitives
 
-react-native-default-ui
+react-native-ui-primitives
 
 ## Installation
 This project is based on:
@@ -11,13 +11,13 @@ This project is based on:
 - Gesture Handler (for Popup), instruction: https://docs.swmansion.com/react-native-gesture-handler
 
 ```sh
-npm install react-native-default-ui
+npm install react-native-ui-primitives
 ```
 
 ## Usage
 
 ```js
-import { tamaguiConfig } from 'react-native-default-ui';
+import { tamaguiConfig } from 'react-native-ui-primitives';
 import '@tamagui/core/reset.css'
 import { TamaguiProvider } from 'tamagui'
 
