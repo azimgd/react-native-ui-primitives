@@ -95,7 +95,9 @@ export default function App() {
               <H4>Grouped Buttons</H4>
 
               <GroupedContainer>
-                <GroupedButton>John Smith</GroupedButton>
+                <GroupedButton iconRight={<Text color="$blue10">Forward</Text>}>
+                  John Smith
+                </GroupedButton>
               </GroupedContainer>
 
               <GroupedContainer>

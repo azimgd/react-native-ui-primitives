@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, type ViewProps } from 'react-native';
-import { Button as TamaguiButton, XStack, styled } from 'tamagui';
+import { Button as TamaguiButton, View, XStack, styled } from 'tamagui';
 import type { GetProps } from 'tamagui';
 import * as colors from '../colors';
 
@@ -31,7 +31,9 @@ const GROUPED_BUTTON_PADDING_HORIZONTAL = Platform.select({
 /**
  * Per-Platform config
  */
-type CustomButtonProps = {};
+type CustomButtonProps = {
+  iconRight?: JSX.Element;
+};
 
 export type ButtonProps = GetProps<typeof TamaguiButton> & CustomButtonProps;
 
@@ -66,10 +68,18 @@ const Wrapper = styled(XStack, {
   paddingHorizontal: GROUPED_BUTTON_PADDING_HORIZONTAL,
 });
 
+const IconRight = styled(View, {
+  width: GROUPED_BUTTON_HEIGHT,
+  height: GROUPED_BUTTON_HEIGHT,
+  justifyContent: 'center',
+  alignItems: 'flex-end',
+});
+
 const StyledTamaguiButton = TamaguiButton.styleable<CustomButtonProps>(
   (props, ref) => (
     <Wrapper>
       <TamaguiButton ref={ref} {...props} unstyled flex={1} />
+      {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
     </Wrapper>
   )
 );
