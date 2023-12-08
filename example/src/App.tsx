@@ -19,6 +19,7 @@ import {
   Attachment,
   Onetime,
   Password,
+  Recipient,
 } from 'react-native-default-ui';
 import { TamaguiProvider, YStack, ScrollView, XStack, H4 } from 'tamagui';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -70,6 +71,12 @@ export default function App() {
 
               <InputInline
                 placeholder="Default"
+                iconLeft={<Noop />}
+                iconRight={<Noop />}
+              />
+
+              <Recipient
+                placeholder="Recipient"
                 iconLeft={<Noop />}
                 iconRight={<Noop />}
               />
