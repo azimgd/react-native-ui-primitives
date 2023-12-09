@@ -3,6 +3,7 @@ import type { PressableProps } from 'react-native';
 import type { ImageProps } from 'react-native';
 import { Platform, ActivityIndicator } from 'react-native';
 import { Image, View, styled } from 'tamagui';
+import * as colors from '../colors';
 
 /**
  * Button props
@@ -29,6 +30,7 @@ const ATTACHMENT_ACTION_PADDING = Platform.select({
 });
 
 type AttachmentProps = {
+  loading?: boolean;
   onActionPress: PressableProps['onPress'];
 } & ImageProps;
 
@@ -53,7 +55,16 @@ const Action = styled(View, {
   position: 'absolute',
   top: 0,
   right: 0,
-  backgroundColor: 'blue',
+  backgroundColor: colors.COLOR_GRAY,
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+const Minus = styled(View, {
+  width: 8,
+  height: 2,
+  borderRadius: 10,
+  backgroundColor: colors.COLOR_WHITE,
 });
 
 const Activity = styled(View, {
@@ -71,11 +82,15 @@ export const Attachment = (props: PropsWithChildren<AttachmentProps>) => {
     <Wrapper>
       <Content source={props.source} />
 
-      <Action onPress={props.onActionPress} />
+      <Action onPress={props.onActionPress}>
+        <Minus />
+      </Action>
 
-      <Activity>
-        <ActivityIndicator size={32} />
-      </Activity>
+      {props.loading ? (
+        <Activity>
+          <ActivityIndicator size={32} />
+        </Activity>
+      ) : null}
     </Wrapper>
   );
 };

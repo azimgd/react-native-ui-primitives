@@ -190,12 +190,13 @@ export default function App() {
 
               <XStack space={4}>
                 <Attachment
-                  source={{ uri: 'https://placehold.it/300' }}
+                  source={{ uri: 'https://placekitten.com/200' }}
                   onActionPress={noopHandler}
                 />
                 <Attachment
-                  source={{ uri: 'https://placehold.it/300' }}
+                  source={{ uri: 'https://placekitten.com/220' }}
                   onActionPress={noopHandler}
+                  loading
                 />
               </XStack>
             </YStack>
