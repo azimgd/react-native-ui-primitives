@@ -102,13 +102,13 @@ export default function App() {
             <YStack space="$4" padding="$4">
               <H4>Grouped Buttons</H4>
 
-              <GroupedContainer>
+              <GroupedContainer title="Profile Information">
                 <GroupedButton iconRight={<Text color="$blue10">Forward</Text>}>
                   John Smith
                 </GroupedButton>
               </GroupedContainer>
 
-              <GroupedContainer>
+              <GroupedContainer title="Preferences">
                 <GroupedButton paint="primary">Settings</GroupedButton>
                 <GroupedButton paint="danger">Delete account</GroupedButton>
               </GroupedContainer>

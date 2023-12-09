@@ -6,6 +6,12 @@ export const COLOR_WHITE = Platform.select({
   default: '#ffffff',
 });
 
+export const COLOR_GRAY = Platform.select({
+  ios: '#808080',
+  android: '#808080',
+  default: '#808080',
+});
+
 export const COLOR_BORDER = Platform.select({
   ios: '#D2D5DA',
   android: '#D2D5DA',
