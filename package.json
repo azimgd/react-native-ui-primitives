@@ -168,8 +168,6 @@
     "email-validator": "^2.0.4",
     "google-libphonenumber": "^3.2.33",
     "react-native-otp-entry": "^1.3.0",
-    "react-native-sfsymbols": "^1.2.1",
-    "react-native-vector-icons": "^10.0.2",
     "tamagui": "^1.79.6"
   }
 }
