@@ -67,8 +67,8 @@ export default function App() {
                 placeholder="Default"
                 label="Full Name"
                 helper="This will not be shared with others"
-                iconLeft={<Text color="$blue10">Back</Text>}
-                iconRight={<Text color="$blue10">Forward</Text>}
+                iconLeft={<Text color="$blue10">◀️</Text>}
+                iconRight={<Text color="$blue10">▶️</Text>}
               />
 
               <Input
@@ -82,20 +82,20 @@ export default function App() {
                 placeholder="Default"
                 label="Password"
                 helper="Password must include numbers and special characters"
-                iconLeft={<Text color="$blue10">Back</Text>}
-                iconRight={<Text color="$blue10">Forward</Text>}
+                iconLeft={<Text color="$blue10">◀️</Text>}
+                iconRight={<Text color="$blue10">▶️</Text>}
               />
 
               <InputInline
                 placeholder="Default"
-                iconLeft={<Text color="$blue10">Back</Text>}
-                iconRight={<Text color="$blue10">Forward</Text>}
+                iconLeft={<Text color="$blue10">◀️</Text>}
+                iconRight={<Text color="$blue10">▶️</Text>}
               />
 
               <Recipient
                 placeholder="Recipient"
-                iconLeft={<Text color="$blue10">Back</Text>}
-                iconRight={<Text color="$blue10">Forward</Text>}
+                iconLeft={<Text color="$blue10">◀️</Text>}
+                iconRight={<Text color="$blue10">▶️</Text>}
               />
             </YStack>
 
@@ -103,7 +103,7 @@ export default function App() {
               <H4>Grouped Buttons</H4>
 
               <GroupedContainer title="Profile Information">
-                <GroupedButton iconRight={<Text color="$blue10">Forward</Text>}>
+                <GroupedButton iconRight={<Text color="$blue10">▶️</Text>}>
                   John Smith
                 </GroupedButton>
               </GroupedContainer>
@@ -143,8 +143,8 @@ export default function App() {
 
               <Header
                 title="Home Page"
-                iconLeft={<Text color="$blue10">Back</Text>}
-                iconRight={<Text color="$blue10">Forward</Text>}
+                iconLeft={<Text color="$blue10">◀️</Text>}
+                iconRight={<Text color="$blue10">▶️</Text>}
               />
             </YStack>
 
@@ -153,8 +153,8 @@ export default function App() {
 
               <Footer
                 title="Home Page"
-                iconLeft={<Text color="$blue10">Back</Text>}
-                iconRight={<Text color="$blue10">Forward</Text>}
+                iconLeft={<Text color="$blue10">◀️</Text>}
+                iconRight={<Text color="$blue10">▶️</Text>}
               />
             </YStack>
 

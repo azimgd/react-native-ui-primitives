@@ -50,6 +50,7 @@ type CustomInputProps = {
   iconRight?: JSX.Element;
   supplement?: JSX.Element;
   overlap?: JSX.Element;
+  labelVisibility?: boolean;
 };
 
 export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
@@ -145,7 +146,7 @@ const StyledTamaguiInput = Platform.select({
 
         {!props.overlap ? (
           <Wrapper>
-            <Label>{props.label}</Label>
+            {props.labelVisibility ? <Label>{props.label}</Label> : null}
             <InputAndroid ref={ref} {...props} />
           </Wrapper>
         ) : null}
@@ -160,7 +161,40 @@ const StyledTamaguiInput = Platform.select({
   )),
 });
 
-export const Input = styled(StyledTamaguiInput, {
+/**
+ * Implementing dynamic collapsable input label
+ */
+const RestyledInput = Platform.select({
+  ios: StyledTamaguiInput,
+  android: StyledTamaguiInput.styleable((props, ref) => {
+    const [labelVisibility, setLabelVisibility] = React.useState(false);
+
+    const handleChangeText = React.useCallback(
+      (text: string) => {
+        setLabelVisibility(text.length > 0);
+
+        if (props.onChangeText) {
+          props.onChangeText(text);
+        }
+      },
+
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [props.onChangeText]
+    );
+
+    return (
+      <StyledTamaguiInput
+        ref={ref}
+        {...props}
+        onChangeText={handleChangeText}
+        labelVisibility={labelVisibility}
+      />
+    );
+  }),
+  default: StyledTamaguiInput,
+});
+
+export const Input = styled(RestyledInput, {
   name: 'Input',
 
   ...(config as InputProps),
