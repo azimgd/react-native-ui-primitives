@@ -1,15 +1,35 @@
 import React from 'react';
+import type { GetProps } from 'tamagui';
 import { InputInline } from '../InputInline';
 import * as validator from './validator';
 import { Chip } from '../Chip';
 
-export const Recipient = InputInline.styleable((props, ref) => {
+type CustomRecipientProps = {
+  onRecipient?: ({
+    recipient,
+    type,
+  }: {
+    recipient: string | undefined;
+    type: 'EMAIL' | 'PHONE' | undefined;
+  }) => void;
+};
+
+export type RecipientProps = GetProps<typeof InputInline> &
+  CustomRecipientProps;
+
+export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
   const [value, setValue] = React.useState(props.value);
   const [recipient, setRecipient] = React.useState<string | undefined>();
 
   /**
    * Update props when value has chenged
    */
+  React.useEffect(() => {
+    if (value && props.onChangeText) {
+      props.onChangeText(value);
+    }
+  }, [props, value]);
+
   React.useEffect(() => {
     if (value && props.onChangeText) {
       props.onChangeText(value);
@@ -37,16 +57,28 @@ export const Recipient = InputInline.styleable((props, ref) => {
       if (email && text.includes(' ')) {
         setRecipient((state) => {
           setValue(state);
+
+          if (props.onRecipient)
+            props.onRecipient({ recipient: email, type: 'EMAIL' });
+
           return email.replace(' ', '');
         });
       } else if (phone && text.includes(' ')) {
         setRecipient((state) => {
           setValue(state);
+
+          if (props.onRecipient)
+            props.onRecipient({ recipient: phone, type: 'PHONE' });
+
           return phone.replace(' ', '');
         });
       } else {
         setRecipient((state) => {
           setValue(state);
+
+          if (props.onRecipient)
+            props.onRecipient({ recipient: undefined, type: undefined });
+
           return undefined;
         });
       }
