@@ -118,8 +118,6 @@ export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
     [recipient, handleRecipientPress]
   );
 
-  console.log(value);
-
   return (
     <InputInline
       ref={ref}
