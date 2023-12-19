@@ -3,6 +3,10 @@ import type { GetProps } from 'tamagui';
 import { InputInline } from '../InputInline';
 import * as validator from './validator';
 import { Chip } from '../Chip';
+import type {
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
+} from 'react-native';
 
 type CustomRecipientProps = {
   onRecipient?: ({
@@ -55,26 +59,28 @@ export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
       const phone = validator.phone(text);
 
       if (email && text.includes(' ')) {
-        setRecipient((state) => {
-          setValue(state);
+        setRecipient(() => {
+          setValue(text);
+          const recipient = email.replace(' ', '');
 
           if (props.onRecipient)
-            props.onRecipient({ recipient: email, type: 'EMAIL' });
+            props.onRecipient({ recipient, type: 'EMAIL' });
 
-          return email.replace(' ', '');
+          return recipient;
         });
       } else if (phone && text.includes(' ')) {
-        setRecipient((state) => {
-          setValue(state);
+        setRecipient(() => {
+          setValue(text);
+          const recipient = phone.replace(' ', '');
 
           if (props.onRecipient)
-            props.onRecipient({ recipient: phone, type: 'PHONE' });
+            props.onRecipient({ recipient, type: 'PHONE' });
 
-          return phone.replace(' ', '');
+          return phone;
         });
       } else {
-        setRecipient((state) => {
-          setValue(state);
+        setRecipient(() => {
+          setValue(text);
 
           if (props.onRecipient)
             props.onRecipient({ recipient: undefined, type: undefined });
@@ -88,6 +94,20 @@ export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
   );
 
   /**
+   * Blur event
+   */
+  const handleBlur = React.useCallback(
+    (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
+      if (props.onBlur) {
+        props.onBlur(event);
+      }
+
+      handleChangeText(value + ' ');
+    },
+    [handleChangeText, props, value]
+  );
+
+  /**
    * Chip component view
    */
   const renderOverlap = React.useMemo(
@@ -98,6 +118,8 @@ export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
     [recipient, handleRecipientPress]
   );
 
+  console.log(value);
+
   return (
     <InputInline
       ref={ref}
@@ -106,6 +128,7 @@ export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
       autoCapitalize="none"
       overlap={renderOverlap}
       value={value}
+      onBlur={handleBlur}
     />
   );
 });
