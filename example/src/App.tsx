@@ -77,7 +77,10 @@ export default function App() {
                 helper="This will not be shared with others"
                 overlap={<Chip>Feb 24, 1990</Chip>}
               />
+            </YStack>
 
+            <YStack space="$4" padding="$4">
+              <H4>Password</H4>
               <Password
                 placeholder="Default"
                 label="Password"
@@ -85,17 +88,25 @@ export default function App() {
                 iconLeft={<Text color="$blue10">◀️</Text>}
                 iconRight={<Text color="$blue10">▶️</Text>}
               />
+            </YStack>
+
+            <YStack space="$4" padding="$4">
+              <H4>Input inline</H4>
 
               <InputInline
                 placeholder="Default"
                 iconLeft={<Text color="$blue10">◀️</Text>}
                 iconRight={<Text color="$blue10">▶️</Text>}
               />
+            </YStack>
+
+            <YStack space="$4" padding="$4">
+              <H4>Recipient</H4>
 
               <Recipient
-                placeholder="Recipient"
-                iconLeft={<Text color="$blue10">◀️</Text>}
-                iconRight={<Text color="$blue10">▶️</Text>}
+                placeholder="Email or Phone"
+                outline="horizontal"
+                label="Recipient:"
               />
             </YStack>
 

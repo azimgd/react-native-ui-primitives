@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GetProps } from 'tamagui';
-import { InputInline } from '../InputInline';
+import { InputInline, type InputInlineProps } from '../InputInline';
 import * as validator from './validator';
 import { Chip } from '../Chip';
 import type {
@@ -16,7 +16,7 @@ type CustomRecipientProps = {
     recipient: string | undefined;
     type: 'EMAIL' | 'PHONE' | undefined;
   }) => void;
-};
+} & InputInlineProps;
 
 export type RecipientProps = GetProps<typeof InputInline> &
   CustomRecipientProps;

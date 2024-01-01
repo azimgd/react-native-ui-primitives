@@ -2,6 +2,8 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { Input as TamaguiInput, XStack, View, styled } from 'tamagui';
 import type { GetProps } from 'tamagui';
+import { Label } from './Label';
+import * as colors from '../colors';
 
 /**
  * Input props
@@ -50,11 +52,13 @@ type CustomInputProps = {
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
   overlap?: JSX.Element;
+  outline?: 'horizontal';
+  label?: string;
 };
 
-export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
+export type InputInlineProps = GetProps<typeof TamaguiInput> & CustomInputProps;
 
-const config = Platform.select<InputProps['style']>({
+const config = Platform.select<InputInlineProps['style']>({
   default: {
     height: INPUT_INLINE_HEIGHT,
     fontSize: INPUT_INLINE_FONT_SIZE,
@@ -65,6 +69,16 @@ const config = Platform.select<InputProps['style']>({
 const Container = styled(XStack, {
   height: INPUT_INLINE_HEIGHT,
   alignItems: 'center',
+
+  variants: {
+    outline: {
+      horizontal: {
+        borderColor: colors.COLOR_BORDER,
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+      },
+    },
+  },
 });
 
 const Wrapper = styled(XStack, {
@@ -78,8 +92,9 @@ const Input = styled(TamaguiInput, {
 
 const StyledTamaguiInput = TamaguiInput.styleable<CustomInputProps>(
   (props, ref) => (
-    <Container>
+    <Container outline={props.outline}>
       {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
+      {props.label ? <Label>{props.label}</Label> : null}
       {props.overlap ? (
         <Wrapper>{props.overlap}</Wrapper>
       ) : (
@@ -93,5 +108,5 @@ const StyledTamaguiInput = TamaguiInput.styleable<CustomInputProps>(
 export const InputInline = styled(StyledTamaguiInput, {
   name: 'InputInline',
 
-  ...(config as InputProps),
+  ...(config as InputInlineProps),
 });
