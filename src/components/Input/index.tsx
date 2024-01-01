@@ -54,7 +54,7 @@ type CustomInputProps = {
   overlap?: JSX.Element;
   labelVisibility?: boolean;
   labelRight?: string;
-  lableRightOnPress?: PressableProps['onPress'];
+  labelRightOnPress?: PressableProps['onPress'];
 };
 
 export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
@@ -124,7 +124,7 @@ const StyledTamaguiInput = Platform.select({
       <XStack justifyContent="space-between">
         {props.label ? <Label>{props.label}</Label> : null}
         {props.labelRight ? (
-          <Pressable onPress={props.lableRightOnPress}>
+          <Pressable onPress={props.labelRightOnPress}>
             <LabelRight>{props.labelRight}</LabelRight>
           </Pressable>
         ) : null}
