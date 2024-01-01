@@ -13,7 +13,7 @@ const HEADER_ICON_HEIGHT = Platform.select({
 });
 const HEADER_WRAPPER_PADDING_HORIZONTAL = Platform.select({
   ios: 12,
-  android: 12,
+  android: 0,
   default: 12,
 });
 const HEADER_WRAPPER_PADDING_VERTICAL = Platform.select({
@@ -76,15 +76,11 @@ const Wrapper = styled(YStack, {
   alignItems: HEADER_WRAPPER_ALIGN,
 
   variants: {
-    paddedLeft: {
-      true: {
-        paddingLeft: Platform.OS === 'android' ? HEADER_ICON_HEIGHT : 0,
-      },
-    },
-    paddedRight: {
-      true: {
-        paddingLeft: Platform.OS === 'android' ? HEADER_ICON_HEIGHT : 0,
-      },
+    padded: {
+      true: Platform.select({
+        android: { paddingHorizontal: HEADER_ICON_HEIGHT },
+        default: { paddingHorizontal: HEADER_WRAPPER_PADDING_HORIZONTAL },
+      }),
     },
   },
 });
@@ -103,7 +99,7 @@ export const Header = (props: PropsWithChildren<CustomHeaderProps>) => {
         </Pressable>
       ) : null}
 
-      <Wrapper paddedLeft={!!props.iconLeft} paddedRight={!!props.iconLeft}>
+      <Wrapper padded={!!props.iconLeft || !!props.iconRight}>
         <Title>{props.title}</Title>
       </Wrapper>
 
