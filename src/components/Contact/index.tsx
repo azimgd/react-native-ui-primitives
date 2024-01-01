@@ -8,7 +8,7 @@ import * as colors from '../colors';
  */
 const CONTACT_ICON_HEIGHT = Platform.select({
   ios: 56,
-  android: 44,
+  android: 56,
   default: 56,
 });
 const CONTACT_WRAPPER_PADDING_HORIZONTAL = Platform.select({
