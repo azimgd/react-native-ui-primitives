@@ -1,5 +1,6 @@
 import React, { type PropsWithChildren } from 'react';
-import { Platform } from 'react-native';
+import type { PressableProps } from 'react-native';
+import { Pressable, Platform, StyleSheet } from 'react-native';
 import { SizableText, View, XStack, YStack, styled } from 'tamagui';
 
 /**
@@ -43,7 +44,9 @@ const HEADER_WRAPPER_ALIGN = Platform.select<'center' | 'flex-start'>({
 type CustomHeaderProps = {
   title: string;
   iconLeft?: JSX.Element;
+  iconLeftOnPress: PressableProps['onPress'];
   iconRight?: JSX.Element;
+  iconRightOnPress: PressableProps['onPress'];
 };
 
 const IconLeft = styled(View, {
@@ -94,13 +97,27 @@ const Title = styled(SizableText, {
 export const Header = (props: PropsWithChildren<CustomHeaderProps>) => {
   return (
     <XStack>
-      {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
+      {props.iconLeft ? (
+        <Pressable onPress={props.iconLeftOnPress} style={styles.iconStyle}>
+          <IconLeft>{props.iconLeft}</IconLeft>
+        </Pressable>
+      ) : null}
 
       <Wrapper paddedLeft={!!props.iconLeft} paddedRight={!!props.iconLeft}>
         <Title>{props.title}</Title>
       </Wrapper>
 
-      {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
+      {props.iconRight ? (
+        <Pressable onPress={props.iconRightOnPress} style={styles.iconStyle}>
+          <IconRight>{props.iconRight}</IconRight>
+        </Pressable>
+      ) : null}
     </XStack>
   );
 };
+
+const styles = StyleSheet.create({
+  iconStyle: {
+    zIndex: 1,
+  },
+});

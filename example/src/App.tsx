@@ -191,7 +191,9 @@ export default function App() {
               <Header
                 title="Home Page"
                 iconLeft={<Text color="$blue10">◀️</Text>}
+                iconLeftOnPress={console.log}
                 iconRight={<Text color="$blue10">▶️</Text>}
+                iconRightOnPress={console.log}
               />
             </YStack>
 
