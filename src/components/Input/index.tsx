@@ -1,10 +1,11 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Pressable } from 'react-native';
 import { Input as TamaguiInput, View, XStack, YStack, styled } from 'tamagui';
 import type { GetProps } from 'tamagui';
 import { Label } from './Label';
 import { Helper } from './Helper';
 import * as colors from '../colors';
+import type { PressableProps } from 'react-native';
 
 /**
  * Input props
@@ -45,12 +46,14 @@ const INPUT_ICON_HEIGHT = Platform.select({
  */
 type CustomInputProps = {
   label: string;
-  helper: string;
+  helper?: string;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
+  iconRightOnPress?: PressableProps['onPress'];
   supplement?: JSX.Element;
   overlap?: JSX.Element;
   labelVisibility?: boolean;
+  labelRight?: string;
 };
 
 export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
@@ -113,7 +116,11 @@ const StyledTamaguiInput = Platform.select({
    */
   default: TamaguiInput.styleable<CustomInputProps>((props, ref) => (
     <View>
-      <Label>{props.label}</Label>
+      <XStack justifyContent="space-between">
+        {props.label ? <Label>{props.label}</Label> : null}
+        {props.labelRight ? <Label>{props.labelRight}</Label> : null}
+      </XStack>
+
       <Container>
         {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
@@ -125,12 +132,19 @@ const StyledTamaguiInput = Platform.select({
           </Wrapper>
         ) : null}
 
-        {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
+        {props.iconRight && !props.iconRightOnPress ? (
+          <IconRight>{props.iconRight}</IconRight>
+        ) : null}
+        {props.iconRight && props.iconRightOnPress ? (
+          <Pressable onPress={props.iconRightOnPress}>
+            <IconRight>{props.iconRight}</IconRight>
+          </Pressable>
+        ) : null}
       </Container>
 
       {props.supplement}
 
-      <Helper>{props.helper}</Helper>
+      {props.helper ? <Helper>{props.helper}</Helper> : null}
     </View>
   )),
 
@@ -151,12 +165,19 @@ const StyledTamaguiInput = Platform.select({
           </Wrapper>
         ) : null}
 
-        {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
+        {props.iconRight && !props.iconRightOnPress ? (
+          <IconRight>{props.iconRight}</IconRight>
+        ) : null}
+        {props.iconRight && props.iconRightOnPress ? (
+          <Pressable onPress={props.iconRightOnPress}>
+            <IconRight>{props.iconRight}</IconRight>
+          </Pressable>
+        ) : null}
       </Container>
 
       {props.supplement}
 
-      <Helper>{props.helper}</Helper>
+      {props.helper ? <Helper>{props.helper}</Helper> : null}
     </View>
   )),
 });
@@ -165,9 +186,13 @@ const StyledTamaguiInput = Platform.select({
  * Implementing dynamic collapsable input label
  */
 const RestyledInput = Platform.select({
-  ios: StyledTamaguiInput,
   android: StyledTamaguiInput.styleable((props, ref) => {
     const [labelVisibility, setLabelVisibility] = React.useState(false);
+    const [secureVisibility, setSecureVisibility] = React.useState(false);
+
+    const handleSecureVisibility = React.useCallback(() => {
+      setSecureVisibility((state) => !state);
+    }, []);
 
     const handleChangeText = React.useCallback(
       (text: string) => {
@@ -188,10 +213,27 @@ const RestyledInput = Platform.select({
         {...props}
         onChangeText={handleChangeText}
         labelVisibility={labelVisibility}
+        iconRightOnPress={handleSecureVisibility}
+        secureTextEntry={secureVisibility}
       />
     );
   }),
-  default: StyledTamaguiInput,
+  default: StyledTamaguiInput.styleable((props, ref) => {
+    const [secureVisibility, setSecureVisibility] = React.useState(false);
+
+    const handleSecureVisibility = React.useCallback(() => {
+      setSecureVisibility((state) => !state);
+    }, []);
+
+    return (
+      <StyledTamaguiInput
+        ref={ref}
+        {...props}
+        iconRightOnPress={handleSecureVisibility}
+        secureTextEntry={secureVisibility}
+      />
+    );
+  }),
 });
 
 export const Input = styled(RestyledInput, {
