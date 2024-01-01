@@ -23,7 +23,9 @@ export type RecipientProps = GetProps<typeof InputInline> &
 
 export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
   const [value, setValue] = React.useState(props.value);
-  const [recipient, setRecipient] = React.useState<string | undefined>();
+  const [recipient, setRecipient] = React.useState<string | undefined>(
+    props.value
+  );
 
   /**
    * Update props when value has chenged
