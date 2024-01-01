@@ -21,7 +21,7 @@ const FOOTER_HEIGHT = Platform.select({
  * Per-Platform config
  */
 type CustomFooterProps = {
-  title: string;
+  title?: string;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
 };
@@ -45,7 +45,6 @@ const IconRight = styled(View, {
 });
 
 const Container = styled(XStack, {
-  flex: 1,
   borderTopColor: colors.COLOR_BORDER,
   borderTopWidth: 1,
   height: FOOTER_HEIGHT,
