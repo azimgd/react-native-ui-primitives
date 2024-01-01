@@ -71,6 +71,19 @@ const Wrapper = styled(YStack, {
   paddingVertical: HEADER_WRAPPER_PADDING_VERTICAL,
   justifyContent: 'center',
   alignItems: HEADER_WRAPPER_ALIGN,
+
+  variants: {
+    paddedLeft: {
+      true: {
+        paddingLeft: Platform.OS === 'android' ? HEADER_ICON_HEIGHT : 0,
+      },
+    },
+    paddedRight: {
+      true: {
+        paddingLeft: Platform.OS === 'android' ? HEADER_ICON_HEIGHT : 0,
+      },
+    },
+  },
 });
 
 const Title = styled(SizableText, {
@@ -83,7 +96,7 @@ export const Header = (props: PropsWithChildren<CustomHeaderProps>) => {
     <XStack>
       {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
-      <Wrapper>
+      <Wrapper paddedLeft={!!props.iconLeft} paddedRight={!!props.iconLeft}>
         <Title>{props.title}</Title>
       </Wrapper>
 
