@@ -260,7 +260,7 @@ export default function App() {
           popupRef={popupRef}
           header={<Header title="Contacts" iconLeft={<Noop />} />}
         >
-          <YStack space="$4" padding="$4">
+          <YStack space="$2" padding="$4">
             <Contact
               title="bob@gmail.com"
               subtitle={['4 messages', '3 items']}

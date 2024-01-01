@@ -1,6 +1,7 @@
 import React, { type PropsWithChildren } from 'react';
 import { Platform } from 'react-native';
 import { SizableText, View, XStack, YStack, styled } from 'tamagui';
+import * as colors from '../colors';
 
 /**
  * Button props
@@ -72,6 +73,12 @@ const Wrapper = styled(YStack, {
   justifyContent: 'space-between',
 });
 
+const Bordered = styled(XStack, {
+  flex: 1,
+  borderBottomColor: colors.COLOR_BORDER,
+  borderBottomWidth: 1,
+});
+
 const Title = styled(SizableText, {
   fontSize: CONTACT_TITLE_FONT_SIZE,
   fontWeight: CONTACT_TITLE_FONT_WEIGHT,
@@ -93,17 +100,19 @@ export const Contact = (props: PropsWithChildren<CustomContactProps>) => {
     <XStack>
       {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
-      <Wrapper>
-        <Title>{props.title}</Title>
+      <Bordered>
+        <Wrapper>
+          <Title>{props.title}</Title>
 
-        <SubTitleWrapper>
-          {props.subtitle.map((item, key) => (
-            <SubTitle key={key}>{item}</SubTitle>
-          ))}
-        </SubTitleWrapper>
-      </Wrapper>
+          <SubTitleWrapper>
+            {props.subtitle.map((item, key) => (
+              <SubTitle key={key}>{item}</SubTitle>
+            ))}
+          </SubTitleWrapper>
+        </Wrapper>
 
-      {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
+        {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
+      </Bordered>
     </XStack>
   );
 };
