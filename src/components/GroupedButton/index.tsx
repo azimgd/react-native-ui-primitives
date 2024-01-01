@@ -14,7 +14,7 @@ const GROUPED_BUTTON_HEIGHT = Platform.select({
 });
 const GROUPED_BUTTON_FONT_SIZE = Platform.select({
   ios: 17,
-  android: 14,
+  android: 17,
   default: 17,
 });
 const GROUPED_BUTTON_FONT_WEIGHT = Platform.select<'400'>({
@@ -24,7 +24,7 @@ const GROUPED_BUTTON_FONT_WEIGHT = Platform.select<'400'>({
 });
 const GROUPED_BUTTON_PADDING_HORIZONTAL = Platform.select({
   ios: 16,
-  android: 16,
+  android: 0,
   default: 16,
 });
 
@@ -32,6 +32,7 @@ const GROUPED_BUTTON_PADDING_HORIZONTAL = Platform.select({
  * Per-Platform config
  */
 type CustomButtonProps = {
+  androidIconLeft?: JSX.Element;
   iconRight?: JSX.Element;
 };
 
@@ -50,22 +51,35 @@ const config = Platform.select<ButtonProps['style']>({
  * Primary
  */
 const configVariantPrimary = Platform.select<ButtonProps['style']>({
-  default: {
-    color: colors.COLOR_PRIMARY,
-  },
+  default: Platform.select({
+    android: {},
+    default: {
+      color: colors.COLOR_PRIMARY,
+    },
+  }),
 });
 
 /**
  * Primary
  */
 const configVariantDanger = Platform.select<ButtonProps['style']>({
-  default: {
-    color: colors.COLOR_DANGER,
-  },
+  default: Platform.select({
+    android: {},
+    default: {
+      color: colors.COLOR_DANGER,
+    },
+  }),
 });
 
 const Wrapper = styled(XStack, {
   paddingHorizontal: GROUPED_BUTTON_PADDING_HORIZONTAL,
+});
+
+const IconLeft = styled(View, {
+  minWidth: GROUPED_BUTTON_HEIGHT,
+  height: GROUPED_BUTTON_HEIGHT,
+  justifyContent: 'center',
+  alignItems: 'flex-start',
 });
 
 const IconRight = styled(View, {
@@ -78,6 +92,10 @@ const IconRight = styled(View, {
 const StyledTamaguiButton = TamaguiButton.styleable<CustomButtonProps>(
   (props, ref) => (
     <Wrapper>
+      {props.androidIconLeft ? (
+        <IconLeft>{props.androidIconLeft}</IconLeft>
+      ) : null}
+
       <TamaguiButton ref={ref} {...props} unstyled flex={1} />
       {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
     </Wrapper>

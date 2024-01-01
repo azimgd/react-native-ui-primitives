@@ -14,12 +14,12 @@ const GROUPED_CONTAINER_BORDER_RADIUS = Platform.select({
 });
 const GROUPED_CONTAINER_PADDING_HORIZONTAL = Platform.select({
   ios: 16,
-  android: 16,
+  android: 0,
   default: 16,
 });
 const GROUPED_CONTAINER_TITLE_FONT_SIZE = Platform.select({
   ios: 13,
-  android: 13,
+  android: 14,
   default: 13,
 });
 const GROUPED_CONTAINER_TITLE_LINE_HEIGHT = Platform.select({
@@ -27,14 +27,14 @@ const GROUPED_CONTAINER_TITLE_LINE_HEIGHT = Platform.select({
   android: 16,
   default: 16,
 });
-const GROUPED_CONTAINER_TITLE_FONT_WEIGHT = Platform.select<'400'>({
+const GROUPED_CONTAINER_TITLE_FONT_WEIGHT = Platform.select<'400' | '500'>({
   ios: '400',
-  android: '400',
+  android: '500',
   default: '400',
 });
 const GROUPED_CONTAINER_TITLE_COLOR = Platform.select({
   ios: colors.COLOR_GRAY,
-  android: colors.COLOR_GRAY,
+  android: '#49454F',
   default: colors.COLOR_GRAY,
 });
 const GROUPED_CONTAINER_TITLE_PADDING_HORIZONTAL = Platform.select({
@@ -70,15 +70,24 @@ const Title = styled(SizableText, {
   lineHeight: GROUPED_CONTAINER_TITLE_LINE_HEIGHT,
   color: GROUPED_CONTAINER_TITLE_COLOR,
   textTransform: 'uppercase',
-  paddingHorizontal: GROUPED_CONTAINER_TITLE_PADDING_HORIZONTAL,
   paddingBottom: GROUPED_CONTAINER_TITLE_PADDING_VERTICAL,
+
+  ...Platform.select({
+    android: {},
+    default: {
+      paddingHorizontal: GROUPED_CONTAINER_TITLE_PADDING_HORIZONTAL,
+    },
+  }),
 });
 
 const config = Platform.select<GroupedContainerProps['style']>({
-  default: {
-    backgroundColor: colors.COLOR_WHITE,
-    borderRadius: GROUPED_CONTAINER_BORDER_RADIUS,
-  },
+  default: Platform.select({
+    android: {},
+    default: {
+      backgroundColor: colors.COLOR_WHITE,
+      borderRadius: GROUPED_CONTAINER_BORDER_RADIUS,
+    },
+  }),
 });
 
 const StyledYStack = YStack.styleable<CustomGroupedContainerProps>(

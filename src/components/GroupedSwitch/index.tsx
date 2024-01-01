@@ -24,7 +24,7 @@ const GROUPED_SWITCH_HEIGHT = Platform.select({
 });
 const GROUPED_SWITCH_FONT_SIZE = Platform.select({
   ios: 17,
-  android: 14,
+  android: 17,
   default: 17,
 });
 const GROUPED_SWITCH_FONT_WEIGHT = Platform.select<'400'>({
@@ -34,7 +34,7 @@ const GROUPED_SWITCH_FONT_WEIGHT = Platform.select<'400'>({
 });
 const GROUPED_SWITCH_PADDING_HORIZONTAL = Platform.select({
   ios: 16,
-  android: 16,
+  android: 0,
   default: 16,
 });
 

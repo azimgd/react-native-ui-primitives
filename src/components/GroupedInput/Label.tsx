@@ -12,7 +12,7 @@ const LABEL_FONT_COLOR = Platform.select({
 });
 const LABEL_FONT_SIZE = Platform.select({
   ios: 17,
-  android: 14,
+  android: 17,
   default: 17,
 });
 const LABEL_FONT_WEIGHT = Platform.select({
