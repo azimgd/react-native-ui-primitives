@@ -44,9 +44,9 @@ const HEADER_WRAPPER_ALIGN = Platform.select<'center' | 'flex-start'>({
 type CustomHeaderProps = {
   title: string;
   iconLeft?: JSX.Element;
-  iconLeftOnPress: PressableProps['onPress'];
+  iconLeftOnPress?: PressableProps['onPress'];
   iconRight?: JSX.Element;
-  iconRightOnPress: PressableProps['onPress'];
+  iconRightOnPress?: PressableProps['onPress'];
 };
 
 const IconLeft = styled(View, {

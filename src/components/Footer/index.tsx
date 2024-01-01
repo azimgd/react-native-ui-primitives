@@ -1,5 +1,6 @@
 import React, { type PropsWithChildren } from 'react';
-import { Platform } from 'react-native';
+import type { PressableProps } from 'react-native';
+import { Platform, Pressable, StyleSheet } from 'react-native';
 import { View, XStack, YStack, styled } from 'tamagui';
 import * as colors from '../colors';
 
@@ -23,7 +24,9 @@ const FOOTER_HEIGHT = Platform.select({
 type CustomFooterProps = {
   title?: string;
   iconLeft?: JSX.Element;
+  iconLeftOnPress?: PressableProps['onPress'];
   iconRight?: JSX.Element;
+  iconRightOnPress?: PressableProps['onPress'];
 };
 
 const IconLeft = styled(View, {
@@ -58,11 +61,25 @@ const Wrapper = styled(YStack, {
 export const Footer = (props: PropsWithChildren<CustomFooterProps>) => {
   return (
     <Container>
-      {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
+      {props.iconLeft ? (
+        <Pressable onPress={props.iconLeftOnPress} style={styles.iconStyle}>
+          <IconLeft>{props.iconLeft}</IconLeft>
+        </Pressable>
+      ) : null}
 
       <Wrapper />
 
-      {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
+      {props.iconRight ? (
+        <Pressable onPress={props.iconRightOnPress} style={styles.iconStyle}>
+          <IconRight>{props.iconRight}</IconRight>
+        </Pressable>
+      ) : null}
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  iconStyle: {
+    zIndex: 1,
+  },
+});
