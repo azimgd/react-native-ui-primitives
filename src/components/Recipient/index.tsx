@@ -24,7 +24,7 @@ export type RecipientProps = GetProps<typeof InputInline> &
 export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
   const [value, setValue] = React.useState(props.value);
   const [recipient, setRecipient] = React.useState<string | undefined>(
-    props.value
+    props.value ?? ''
   );
 
   /**

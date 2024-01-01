@@ -88,6 +88,15 @@ export default function App() {
                 iconLeft={<Text color="$blue10">◀️</Text>}
                 iconRight={<Text color="$blue10">▶️</Text>}
               />
+
+              <Input
+                placeholder="Default"
+                label="Password"
+                helper="Password must include numbers and special characters"
+                secureTextEntry
+                iconLeft={<Text color="$blue10">◀️</Text>}
+                iconRight={<Text color="$blue10">▶️</Text>}
+              />
             </YStack>
 
             <YStack space="$4" padding="$4">
@@ -107,6 +116,13 @@ export default function App() {
                 placeholder="Email or Phone"
                 outline="horizontal"
                 label="Recipient:"
+              />
+
+              <Recipient
+                placeholder="Email or Phone"
+                outline="horizontal"
+                label="Recipient:"
+                value="user@mail.com"
               />
             </YStack>
 
