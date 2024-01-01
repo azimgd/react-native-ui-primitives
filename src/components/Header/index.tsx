@@ -22,7 +22,7 @@ const HEADER_WRAPPER_PADDING_VERTICAL = Platform.select({
 });
 const HEADER_TITLE_FONT_SIZE = Platform.select({
   ios: 17,
-  android: 16,
+  android: 20,
   default: 17,
 });
 const HEADER_TITLE_FONT_WEIGHT = Platform.select<'400'>({
