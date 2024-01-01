@@ -45,7 +45,7 @@ const INPUT_ICON_HEIGHT = Platform.select({
  * Per-Platform config
  */
 type CustomInputProps = {
-  label: string;
+  label?: string;
   helper?: string;
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
@@ -54,6 +54,7 @@ type CustomInputProps = {
   overlap?: JSX.Element;
   labelVisibility?: boolean;
   labelRight?: string;
+  lableRightOnPress?: PressableProps['onPress'];
 };
 
 export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
@@ -81,6 +82,10 @@ const Container = styled(XStack, {
 
 const Wrapper = styled(YStack, {
   flex: 1,
+});
+
+const LabelRight = styled(Label, {
+  color: colors.COLOR_PRIMARY,
 });
 
 const InputAndroid = styled(TamaguiInput, {
@@ -118,7 +123,11 @@ const StyledTamaguiInput = Platform.select({
     <View>
       <XStack justifyContent="space-between">
         {props.label ? <Label>{props.label}</Label> : null}
-        {props.labelRight ? <Label>{props.labelRight}</Label> : null}
+        {props.labelRight ? (
+          <Pressable onPress={props.lableRightOnPress}>
+            <LabelRight>{props.labelRight}</LabelRight>
+          </Pressable>
+        ) : null}
       </XStack>
 
       <Container>
