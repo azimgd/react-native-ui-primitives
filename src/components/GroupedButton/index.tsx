@@ -9,7 +9,7 @@ import * as colors from '../colors';
  */
 const GROUPED_BUTTON_HEIGHT = Platform.select({
   ios: 44,
-  android: 44,
+  android: 56,
   default: 44,
 });
 const GROUPED_BUTTON_FONT_SIZE = Platform.select({
@@ -92,7 +92,7 @@ const IconRight = styled(View, {
 const StyledTamaguiButton = TamaguiButton.styleable<CustomButtonProps>(
   (props, ref) => (
     <Wrapper>
-      {props.androidIconLeft ? (
+      {props.androidIconLeft && Platform.OS === 'android' ? (
         <IconLeft>{props.androidIconLeft}</IconLeft>
       ) : null}
 

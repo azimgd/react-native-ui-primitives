@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { SizableText, Switch, XStack, styled } from 'tamagui';
+import { SizableText, Switch, XStack, View, styled } from 'tamagui';
 import type { GetProps } from 'tamagui';
 import * as colors from '../colors';
 
@@ -19,7 +19,7 @@ const GROUPED_SWITCH_THUMB_COLOR = Platform.select({
 });
 const GROUPED_SWITCH_HEIGHT = Platform.select({
   ios: 44,
-  android: 44,
+  android: 56,
   default: 44,
 });
 const GROUPED_SWITCH_FONT_SIZE = Platform.select({
@@ -42,6 +42,7 @@ const GROUPED_SWITCH_PADDING_HORIZONTAL = Platform.select({
  * Per-Platform config
  */
 type CustomButtonProps = {
+  androidIconLeft?: JSX.Element;
   checked: boolean;
 };
 
@@ -79,6 +80,13 @@ const Wrapper = styled(XStack, {
   paddingHorizontal: GROUPED_SWITCH_PADDING_HORIZONTAL,
 });
 
+const IconLeft = styled(View, {
+  minWidth: GROUPED_SWITCH_HEIGHT,
+  height: GROUPED_SWITCH_HEIGHT,
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+});
+
 const CustomSwitch = styled(Switch, {
   name: 'CustomSwitch',
 
@@ -103,6 +111,9 @@ CustomSwitch.Thumb = styled(Switch.Thumb, {
 const StyledSizableText = SizableText.styleable<CustomButtonProps>(
   (props, ref) => (
     <Wrapper>
+      {props.androidIconLeft && Platform.OS === 'android' ? (
+        <IconLeft>{props.androidIconLeft}</IconLeft>
+      ) : null}
       <SizableText ref={ref} {...props} unstyled flex={1} />
       <CustomSwitch checked={props.checked}>
         <CustomSwitch.Thumb animation="quick" />

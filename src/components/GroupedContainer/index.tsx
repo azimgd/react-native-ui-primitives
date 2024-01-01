@@ -102,6 +102,9 @@ const StyledYStack = YStack.styleable<CustomGroupedContainerProps>(
 export const GroupedContainer = styled(StyledYStack, {
   name: 'GroupedContainer',
 
-  separator: <Separator />,
+  separator: Platform.select({
+    android: undefined,
+    default: <Separator />,
+  }),
   ...(config as TextProps),
 });

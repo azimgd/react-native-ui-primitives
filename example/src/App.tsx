@@ -120,8 +120,18 @@ export default function App() {
               </GroupedContainer>
 
               <GroupedContainer title="Preferences">
-                <GroupedButton paint="primary">Settings</GroupedButton>
-                <GroupedButton paint="danger">Delete account</GroupedButton>
+                <GroupedButton
+                  androidIconLeft={<Text color="$blue10">▶️</Text>}
+                  paint="primary"
+                >
+                  Settings
+                </GroupedButton>
+                <GroupedButton
+                  androidIconLeft={<Text color="$blue10">▶️</Text>}
+                  paint="danger"
+                >
+                  Delete account
+                </GroupedButton>
               </GroupedContainer>
             </YStack>
 
@@ -144,8 +154,18 @@ export default function App() {
               <H4>Grouped Switchs</H4>
 
               <GroupedContainer>
-                <GroupedSwitch checked>Checked</GroupedSwitch>
-                <GroupedSwitch checked={false}>Unchecked</GroupedSwitch>
+                <GroupedSwitch
+                  androidIconLeft={<Text color="$blue10">▶️</Text>}
+                  checked
+                >
+                  Checked
+                </GroupedSwitch>
+                <GroupedSwitch
+                  androidIconLeft={<Text color="$blue10">▶️</Text>}
+                  checked={false}
+                >
+                  Unchecked
+                </GroupedSwitch>
               </GroupedContainer>
             </YStack>
 

@@ -9,7 +9,7 @@ import { Label } from './Label';
  */
 const GROUPED_INPUT_HEIGHT = Platform.select({
   ios: 44,
-  android: 44,
+  android: 56,
   default: 44,
 });
 const GROUPED_INPUT_FONT_SIZE = Platform.select({
