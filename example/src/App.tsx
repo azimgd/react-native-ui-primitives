@@ -189,26 +189,29 @@ export default function App() {
               <H4>Headers</H4>
 
               <Header
-                title="Home Page"
                 iconLeft={<Text color="$blue10">◀️</Text>}
                 iconLeftOnPress={console.log}
                 iconRight={<Text color="$blue10">▶️</Text>}
                 iconRightOnPress={console.log}
-              />
+              >
+                Home Page
+              </Header>
 
               <Header
-                title="Home Page"
                 iconLeft={<Text color="$blue10">◀️</Text>}
                 iconLeftOnPress={console.log}
-              />
+              >
+                Home Page
+              </Header>
 
               <Header
-                title="Home Page"
                 iconRight={<Text color="$blue10">▶️</Text>}
                 iconRightOnPress={console.log}
-              />
+              >
+                Home Page
+              </Header>
 
-              <Header title="Home Page" />
+              <Header>Home Page</Header>
             </YStack>
 
             <YStack space="$4" padding="$4">
@@ -274,7 +277,7 @@ export default function App() {
           value={new Date()}
         />
 
-        <Popup popupRef={popupRef} header={<Header title="Contacts" />}>
+        <Popup popupRef={popupRef} header={<Header>Contacts</Header>}>
           <YStack space="$2" padding="$4">
             <Contact
               title="bob@gmail.com"

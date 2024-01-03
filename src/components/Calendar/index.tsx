@@ -5,8 +5,6 @@ import DateTimePicker, {
 import { Popup, type PopupRef } from '../Popup';
 import { Header } from '../Header';
 
-const Noop = () => null;
-
 export type CalendarRef = {
   open: () => void;
   close: () => void;
@@ -36,7 +34,7 @@ export const Calendar = (props: PropsWithChildren<CalendarProps>) => {
     <Popup
       // @ts-ignore
       popupRef={popupRef}
-      header={<Header title="Calendar" iconLeft={<Noop />} />}
+      header={<Header>Calendar</Header>}
     >
       <DateTimePicker
         onChange={props.onChange}
