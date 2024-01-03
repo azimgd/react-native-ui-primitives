@@ -7,7 +7,7 @@ import type {
   NativeSyntheticEvent,
   TextInputFocusEventData,
 } from 'react-native';
-import { Label as GroupedInputLabel } from '../GroupedInput/Label';
+import { Label } from './Label';
 import * as colors from '../colors';
 
 type CustomRecipientProps = {
@@ -35,12 +35,6 @@ const Container = styled(XStack, {
       },
     },
   },
-});
-
-const Label = styled(GroupedInputLabel, {
-  width: 'auto',
-  color: colors.COLOR_GRAY,
-  marginRight: 4,
 });
 
 export type RecipientProps = GetProps<typeof Inline> & CustomRecipientProps;
