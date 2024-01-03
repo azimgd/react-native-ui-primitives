@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GetProps } from 'tamagui';
-import { InputInline, type InputInlineProps } from '../InputInline';
+import { Input, type InputProps } from '../Input';
 import * as validator from './validator';
 import { Chip } from '../Chip';
 import type {
@@ -16,12 +16,11 @@ type CustomRecipientProps = {
     recipient: string | undefined;
     type: 'EMAIL' | 'PHONE' | undefined;
   }) => void;
-} & InputInlineProps;
+} & InputProps;
 
-export type RecipientProps = GetProps<typeof InputInline> &
-  CustomRecipientProps;
+export type RecipientProps = GetProps<typeof Input> & CustomRecipientProps;
 
-export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
+export const Recipient = Input.styleable<RecipientProps>((props, ref) => {
   const [value, setValue] = React.useState(props.value);
   const [recipient, setRecipient] = React.useState<string | undefined>(
     props.value ?? ''
@@ -121,7 +120,7 @@ export const Recipient = InputInline.styleable<RecipientProps>((props, ref) => {
   );
 
   return (
-    <InputInline
+    <Input
       ref={ref}
       {...props}
       onChangeText={handleChangeText}

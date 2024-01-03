@@ -1,6 +1,7 @@
 export { tamaguiConfig } from './config';
 export { Button } from './components/Button';
 export { Input } from './components/Input';
+export { Inline } from './components/Input/Inline';
 export { GroupedButton } from './components/GroupedButton';
 export { GroupedInput } from './components/GroupedInput';
 export { GroupedContainer } from './components/GroupedContainer';
@@ -13,6 +14,5 @@ export { Attachment } from './components/Attachment';
 export { Footer } from './components/Footer';
 export { Onetime } from './components/Onetime';
 export { Password } from './components/Password';
-export { InputInline } from './components/InputInline';
 export { Recipient } from './components/Recipient';
 export { Chip } from './components/Chip';

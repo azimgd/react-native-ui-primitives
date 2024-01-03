@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { Input as TamaguiInput, XStack, styled } from 'tamagui';
+import { XStack, styled } from 'tamagui';
+import { Inline } from '../Input/Inline';
 import type { GetProps } from 'tamagui';
 import { Label } from './Label';
 
@@ -36,7 +37,7 @@ type CustomInputProps = {
   overlap?: JSX.Element;
 };
 
-export type InputProps = GetProps<typeof TamaguiInput> & CustomInputProps;
+export type InputProps = GetProps<typeof Inline> & CustomInputProps;
 
 const config = Platform.select<InputProps['style']>({
   default: {
@@ -51,17 +52,15 @@ const Wrapper = styled(XStack, {
   paddingHorizontal: GROUPED_INPUT_PADDING_HORIZONTAL,
 });
 
-const StyledTamaguiInput = TamaguiInput.styleable<CustomInputProps>(
-  (props, ref) => (
-    <Wrapper>
-      {props.label ? <Label>{props.label}</Label> : null}
+const StyledInput = Inline.styleable<CustomInputProps>((props, ref) => (
+  <Wrapper>
+    {props.label ? <Label>{props.label}</Label> : null}
 
-      {props.overlap || <TamaguiInput ref={ref} {...props} unstyled flex={1} />}
-    </Wrapper>
-  )
-);
+    {props.overlap || <Inline ref={ref} {...props} unstyled flex={1} />}
+  </Wrapper>
+));
 
-export const GroupedInput = styled(StyledTamaguiInput, {
+export const GroupedInput = styled(StyledInput, {
   name: 'GroupedInput',
 
   ...(config as InputProps),

@@ -4,7 +4,6 @@ import {
   tamaguiConfig,
   Button,
   Input,
-  InputInline,
   GroupedButton,
   GroupedInput,
   GroupedContainer,
@@ -94,16 +93,6 @@ export default function App() {
                 label="Password"
                 helper="Password must include numbers and special characters"
                 secureTextEntry
-                iconLeft={<Text color="$blue10">◀️</Text>}
-                iconRight={<Text color="$blue10">▶️</Text>}
-              />
-            </YStack>
-
-            <YStack space="$4" padding="$4">
-              <H4>Input inline</H4>
-
-              <InputInline
-                placeholder="Default"
                 iconLeft={<Text color="$blue10">◀️</Text>}
                 iconRight={<Text color="$blue10">▶️</Text>}
               />
