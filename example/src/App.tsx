@@ -10,6 +10,7 @@ import {
   GroupedSwitch,
   Contact,
   Header,
+  HeaderEnlarged,
   Footer,
   Popup,
   type PopupRef,
@@ -201,6 +202,10 @@ export default function App() {
               </Header>
 
               <Header>Home Page</Header>
+
+              <HeaderEnlarged iconLeft={<Text color="$blue10">◀️</Text>}>
+                Home Page
+              </HeaderEnlarged>
             </YStack>
 
             <YStack space="$4" padding="$4">

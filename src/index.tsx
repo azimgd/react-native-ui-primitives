@@ -8,6 +8,7 @@ export { GroupedContainer } from './components/GroupedContainer';
 export { GroupedSwitch } from './components/GroupedSwitch';
 export { Contact } from './components/Contact';
 export { Header } from './components/Header';
+export { HeaderEnlarged } from './components/Header/Enlarged';
 export { Popup, type PopupRef } from './components/Popup';
 export { Calendar, type CalendarRef } from './components/Calendar';
 export { Attachment } from './components/Attachment';
