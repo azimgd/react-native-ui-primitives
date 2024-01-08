@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   tamaguiConfig,
   Button,
@@ -21,6 +21,7 @@ import {
   Password,
   Recipient,
   Chip,
+  Window,
 } from 'react-native-ui-primitives';
 import {
   TamaguiProvider,
@@ -49,7 +50,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={styles.gesture}>
       <TamaguiProvider config={tamaguiConfig}>
-        <SafeAreaView style={styles.safearea}>
+        <Window>
           <ScrollView style={styles.container}>
             <YStack space="$4" padding="$4">
               <H4>Buttons</H4>
@@ -263,7 +264,7 @@ export default function App() {
               </XStack>
             </YStack>
           </ScrollView>
-        </SafeAreaView>
+        </Window>
 
         <Calendar
           calendarRef={calendarRef}
