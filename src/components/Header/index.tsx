@@ -42,6 +42,9 @@ const HEADER_WRAPPER_ALIGN = Platform.select<'center' | 'flex-start'>({
  * Per-Platform config
  */
 type CustomHeaderProps = {
+  iconLeftBackVisibility?: boolean;
+  iconLeftBack?: JSX.Element;
+  iconLeftBackOnPress?: PressableProps['onPress'];
   iconLeftVisibility?: boolean;
   iconLeft?: JSX.Element;
   iconLeftOnPress?: PressableProps['onPress'];
@@ -94,7 +97,11 @@ const Title = styled(SizableText, {
 export const Header = (props: PropsWithChildren<CustomHeaderProps>) => {
   return (
     <XStack>
-      {props.iconLeft && props.iconLeftVisibility !== false ? (
+      {props.iconLeftBack && props.iconLeftBackVisibility !== false ? (
+        <Pressable onPress={props.iconLeftBackOnPress} style={styles.iconStyle}>
+          <IconLeft>{props.iconLeftBack}</IconLeft>
+        </Pressable>
+      ) : props.iconLeft && props.iconLeftVisibility !== false ? (
         <Pressable onPress={props.iconLeftOnPress} style={styles.iconStyle}>
           <IconLeft>{props.iconLeft}</IconLeft>
         </Pressable>
