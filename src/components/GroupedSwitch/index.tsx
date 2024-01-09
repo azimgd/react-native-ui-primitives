@@ -41,43 +41,23 @@ const GROUPED_SWITCH_PADDING_HORIZONTAL = Platform.select({
 /**
  * Per-Platform config
  */
-type CustomButtonProps = {
+type CustomSwitchProps = {
   androidIconLeft?: JSX.Element;
-  checked: boolean;
 };
 
-export type ButtonProps = GetProps<typeof SizableText> & CustomButtonProps;
-
-const config = Platform.select<ButtonProps['style']>({
-  default: {
-    lineHeight: GROUPED_SWITCH_HEIGHT,
-    height: GROUPED_SWITCH_HEIGHT,
-    fontSize: GROUPED_SWITCH_FONT_SIZE,
-    fontWeight: GROUPED_SWITCH_FONT_WEIGHT,
-  },
-});
-
-/**
- * Primary
- */
-const configVariantPrimary = Platform.select<ButtonProps['style']>({
-  default: {
-    color: colors.COLOR_PRIMARY,
-  },
-});
-
-/**
- * Primary
- */
-const configVariantDanger = Platform.select<ButtonProps['style']>({
-  default: {
-    color: colors.COLOR_DANGER,
-  },
-});
+export type ButtonProps = GetProps<typeof Switch> & CustomSwitchProps;
 
 const Wrapper = styled(XStack, {
   alignItems: 'center',
   paddingHorizontal: GROUPED_SWITCH_PADDING_HORIZONTAL,
+});
+
+const Label = styled(SizableText, {
+  flex: 1,
+  lineHeight: GROUPED_SWITCH_HEIGHT,
+  height: GROUPED_SWITCH_HEIGHT,
+  fontSize: GROUPED_SWITCH_FONT_SIZE,
+  fontWeight: GROUPED_SWITCH_FONT_WEIGHT,
 });
 
 const IconLeft = styled(View, {
@@ -108,29 +88,18 @@ CustomSwitch.Thumb = styled(Switch.Thumb, {
   backgroundColor: GROUPED_SWITCH_THUMB_COLOR,
 });
 
-const StyledSizableText = SizableText.styleable<CustomButtonProps>(
-  (props, ref) => (
+export const GroupedSwitch = CustomSwitch.styleable<CustomSwitchProps>(
+  ({ children, ...props }, ref) => (
     <Wrapper>
       {props.androidIconLeft && Platform.OS === 'android' ? (
         <IconLeft>{props.androidIconLeft}</IconLeft>
       ) : null}
-      <SizableText ref={ref} {...props} unstyled flex={1} />
-      <CustomSwitch checked={props.checked}>
+
+      <Label>{children}</Label>
+
+      <CustomSwitch ref={ref} {...props}>
         <CustomSwitch.Thumb animation="quick" />
       </CustomSwitch>
     </Wrapper>
   )
 );
-
-export const GroupedSwitch = styled(StyledSizableText, {
-  name: 'GroupedSwitch',
-
-  ...(config as ButtonProps),
-
-  variants: {
-    paint: {
-      primary: configVariantPrimary as CustomButtonProps,
-      danger: configVariantDanger as CustomButtonProps,
-    },
-  },
-});
