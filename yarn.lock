@@ -4026,7 +4026,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/config@npm:latest":
+"@tamagui/config@npm:1.86.6":
   version: 1.86.6
   resolution: "@tamagui/config@npm:1.86.6"
   dependencies:
@@ -16340,7 +16340,7 @@ __metadata:
     "@react-native-community/datetimepicker": ^7.6.2
     "@react-native/eslint-config": ^0.72.2
     "@release-it/conventional-changelog": ^5.0.0
-    "@tamagui/config": latest
+    "@tamagui/config": 1.86.6
     "@types/google-libphonenumber": ^7.4.30
     "@types/jest": ^28.1.2
     "@types/react": 18.2.42
@@ -16360,7 +16360,7 @@ __metadata:
     react-native-builder-bob: ^0.20.0
     react-native-otp-entry: ^1.3.0
     release-it: ^15.0.0
-    tamagui: latest
+    tamagui: 1.86.6
     typescript: ^5.0.2
   peerDependencies:
     react: "*"
@@ -18285,7 +18285,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tamagui@npm:latest":
+"tamagui@npm:1.86.6":
   version: 1.86.6
   resolution: "tamagui@npm:1.86.6"
   dependencies:
