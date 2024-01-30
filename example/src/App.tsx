@@ -8,6 +8,7 @@ import {
   GroupedInput,
   GroupedContainer,
   GroupedSwitch,
+  GroupedPassword,
   Contact,
   Header,
   HeaderEnlarged,
@@ -147,6 +148,7 @@ export default function App() {
                   overlap={<Chip>Feb 24, 1990</Chip>}
                 />
                 <GroupedInput label="Lastname" placeholder="Default" />
+                <GroupedPassword label="Password" placeholder="Default" />
               </GroupedContainer>
             </YStack>
 

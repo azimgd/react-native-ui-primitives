@@ -6,6 +6,7 @@ export { GroupedButton } from './components/GroupedButton';
 export { GroupedInput } from './components/GroupedInput';
 export { GroupedContainer } from './components/GroupedContainer';
 export { GroupedSwitch } from './components/GroupedSwitch';
+export { GroupedPassword } from './components/GroupedPassword';
 export { Contact } from './components/Contact';
 export { Header } from './components/Header';
 export { HeaderEnlarged } from './components/Header/Enlarged';
