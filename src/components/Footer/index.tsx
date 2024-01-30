@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren } from 'react';
+import React from 'react';
 import type { PressableProps } from 'react-native';
 import { Platform, Pressable, StyleSheet } from 'react-native';
 import { View, XStack, YStack, styled } from 'tamagui';
@@ -58,9 +58,9 @@ const Wrapper = styled(YStack, {
   flex: 1,
 });
 
-export const Footer = (props: PropsWithChildren<CustomFooterProps>) => {
+export const Footer = Container.styleable<CustomFooterProps>((props, ref) => {
   return (
-    <Container>
+    <Container {...props} ref={ref}>
       {props.iconLeft ? (
         <Pressable onPress={props.iconLeftOnPress} style={styles.iconStyle}>
           <IconLeft>{props.iconLeft}</IconLeft>
@@ -76,7 +76,7 @@ export const Footer = (props: PropsWithChildren<CustomFooterProps>) => {
       ) : null}
     </Container>
   );
-};
+});
 
 const styles = StyleSheet.create({
   iconStyle: {
