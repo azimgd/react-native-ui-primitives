@@ -89,6 +89,18 @@ const configVariantDanger = Platform.select<ButtonProps['style']>({
   },
 });
 
+/**
+ * Transparent
+ */
+const configVariantTransparent = Platform.select<ButtonProps['style']>({
+  default: {
+    backgroundColor: colors.COLOR_TRANSPARENT,
+    borderWidth: 1,
+    borderColor: colors.COLOR_TRANSPARENT,
+    color: colors.COLOR_GRAY,
+  },
+});
+
 export const Button = styled(TamaguiButton, {
   name: 'Button',
 
@@ -99,6 +111,7 @@ export const Button = styled(TamaguiButton, {
       primary: configVariantPrimary as ViewProps,
       secondary: configVariantSecondary as ViewProps,
       danger: configVariantDanger as ViewProps,
+      transparent: configVariantTransparent as ViewProps,
     },
 
     disabled: {

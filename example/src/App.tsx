@@ -51,6 +51,7 @@ export default function App() {
               <Button paint="secondary">Secondary</Button>
               <Button disabled>Disabled</Button>
               <Button paint="danger">Danger</Button>
+              <Button paint="transparent">Transparent</Button>
             </YStack>
 
             <YStack space="$4" padding="$4">

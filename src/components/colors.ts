@@ -1,5 +1,11 @@
 import { Platform } from 'react-native';
 
+export const COLOR_TRANSPARENT = Platform.select({
+  ios: 'transparent',
+  android: 'transparent',
+  default: 'transparent',
+});
+
 export const COLOR_WHITE = Platform.select({
   ios: '#ffffff',
   android: '#ffffff',
