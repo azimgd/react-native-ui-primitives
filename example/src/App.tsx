@@ -21,6 +21,7 @@ import {
   Recipient,
   Chip,
   Window,
+  Tabs,
 } from 'react-native-ui-primitives';
 import {
   TamaguiProvider,
@@ -213,6 +214,17 @@ export default function App() {
                 iconLeftOnPress={console.log}
                 iconRight={<Text color="$blue10">▶️</Text>}
                 iconRightOnPress={console.log}
+              />
+            </YStack>
+
+            <YStack space="$4" padding="$4">
+              <H4>Tabs</H4>
+
+              <Tabs
+                data={[
+                  { title: 'Home', onPress: () => {}, active: true },
+                  { title: 'Work', onPress: () => {}, active: false },
+                ]}
               />
             </YStack>
 

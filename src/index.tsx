@@ -18,3 +18,4 @@ export { Password } from './components/Password';
 export { Recipient } from './components/Recipient';
 export { Chip } from './components/Chip';
 export { Window } from './components/Window';
+export { Tabs } from './components/Tabs';
