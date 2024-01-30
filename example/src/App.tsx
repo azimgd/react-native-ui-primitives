@@ -14,8 +14,6 @@ import {
   Footer,
   Popup,
   type PopupRef,
-  Calendar,
-  type CalendarRef,
   Attachment,
   Onetime,
   Password,
@@ -39,13 +37,7 @@ const Noop = () => null;
 const noopHandler = () => null;
 
 export default function App() {
-  const calendarRef = React.useRef<CalendarRef>(null);
   const popupRef = React.useRef<PopupRef>(null);
-
-  const toggleCalendar = React.useCallback(() => {
-    calendarRef.current?.open();
-    popupRef.current?.expand();
-  }, []);
 
   return (
     <GestureHandlerRootView style={styles.gesture}>
@@ -241,14 +233,6 @@ export default function App() {
             </YStack>
 
             <YStack space="$4" padding="$4">
-              <H4>Calendar</H4>
-
-              <Button paint="secondary" onPress={toggleCalendar}>
-                Open Calendar
-              </Button>
-            </YStack>
-
-            <YStack space="$4" padding="$4">
               <H4>Attachments</H4>
 
               <XStack space={4}>
@@ -265,12 +249,6 @@ export default function App() {
             </YStack>
           </ScrollView>
         </Window>
-
-        <Calendar
-          calendarRef={calendarRef}
-          onChange={noopHandler}
-          value={new Date()}
-        />
 
         <Popup popupRef={popupRef} header={<Header>Contacts</Header>}>
           <YStack space="$2" padding="$4">

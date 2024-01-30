@@ -10,7 +10,6 @@ export { Contact } from './components/Contact';
 export { Header } from './components/Header';
 export { HeaderEnlarged } from './components/Header/Enlarged';
 export { Popup, type PopupRef } from './components/Popup';
-export { Calendar, type CalendarRef } from './components/Calendar';
 export { Attachment } from './components/Attachment';
 export { Footer } from './components/Footer';
 export { Onetime } from './components/Onetime';
