@@ -86,8 +86,8 @@ export const Label = styled(Text, {
 export const Tabs = Container.styleable<CustomTabsProps>((props, ref) => (
   <Container ref={ref} {...props}>
     {props.data.map((item, key) => (
-      <Pressable onPress={item.onPress} style={{ flex: 1 }}>
-        <Item key={key} active={item.active}>
+      <Pressable onPress={item.onPress} style={{ flex: 1 }} key={key}>
+        <Item active={item.active}>
           {/** @ts-ignore */}
           <Label active={item.active}>{item.title}</Label>
         </Item>
