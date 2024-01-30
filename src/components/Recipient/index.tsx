@@ -32,6 +32,7 @@ const Container = styled(XStack, {
         borderBottomWidth: 1,
         borderColor: colors.COLOR_BORDER,
         paddingVertical: 4,
+        paddingHorizontal: 16,
       },
     },
   },
