@@ -102,13 +102,6 @@ const StyledInput = Platform.select({
 const RestyledInput = Platform.select({
   android: StyledInput.styleable((props, ref) => {
     const [labelVisibility, setLabelVisibility] = React.useState(false);
-    const [secureVisibility, setSecureVisibility] = React.useState(
-      props.secureTextEntry
-    );
-
-    const handleSecureVisibility = React.useCallback(() => {
-      setSecureVisibility((state) => !state);
-    }, []);
 
     const handleChangeText = React.useCallback(
       (text: string) => {
@@ -129,28 +122,11 @@ const RestyledInput = Platform.select({
         {...props}
         onChangeText={handleChangeText}
         labelVisibility={labelVisibility}
-        iconRightOnPress={handleSecureVisibility}
-        secureTextEntry={secureVisibility}
       />
     );
   }),
   default: StyledInput.styleable((props, ref) => {
-    const [secureVisibility, setSecureVisibility] = React.useState(
-      props.secureTextEntry
-    );
-
-    const handleSecureVisibility = React.useCallback(() => {
-      setSecureVisibility((state) => !state);
-    }, []);
-
-    return (
-      <StyledInput
-        ref={ref}
-        {...props}
-        iconRightOnPress={handleSecureVisibility}
-        secureTextEntry={secureVisibility}
-      />
-    );
+    return <StyledInput ref={ref} {...props} />;
   }),
 });
 

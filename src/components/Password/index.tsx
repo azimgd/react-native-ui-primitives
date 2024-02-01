@@ -3,7 +3,12 @@ import { Input } from '../Input';
 import { Meter } from './Meter';
 import { passwordStrength, type Result } from 'check-password-strength';
 
-export const Password = Input.styleable((props, ref) => {
+type CustomPassword = {
+  secureTextEntry?: boolean;
+  meterVisible?: boolean;
+};
+
+export const Password = Input.styleable<CustomPassword>((props, ref) => {
   const [meter, setMeter] = React.useState<Result<any>>();
 
   /**
@@ -27,8 +32,12 @@ export const Password = Input.styleable((props, ref) => {
       ref={ref}
       {...props}
       onChangeText={handleChangeText}
-      secureTextEntry
-      supplement={<Meter meter={meter} />}
+      secureTextEntry={
+        props.secureTextEntry === undefined ? true : props.secureTextEntry
+      }
+      supplement={
+        props.meterVisible === false ? undefined : <Meter meter={meter} />
+      }
     />
   );
 });

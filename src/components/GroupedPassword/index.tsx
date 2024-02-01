@@ -25,37 +25,48 @@ const Supplement = styled(View, {
   right: 0,
 });
 
-export const GroupedPassword = GroupedInput.styleable((props, ref) => {
-  const [meter, setMeter] = React.useState<Result<any>>();
+type CustomGroupedInput = {
+  secureTextEntry?: boolean;
+  meterVisible?: boolean;
+};
 
-  /**
-   * Password strength meter
-   */
-  const handleChangeText = React.useCallback(
-    (text: string) => {
-      setMeter(passwordStrength(text));
+export const GroupedPassword = GroupedInput.styleable<CustomGroupedInput>(
+  (props, ref) => {
+    const [meter, setMeter] = React.useState<Result<any>>();
 
-      if (props.onChangeText) {
-        props.onChangeText(text);
-      }
-    },
+    /**
+     * Password strength meter
+     */
+    const handleChangeText = React.useCallback(
+      (text: string) => {
+        setMeter(passwordStrength(text));
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [props.onChangeText]
-  );
+        if (props.onChangeText) {
+          props.onChangeText(text);
+        }
+      },
 
-  return (
-    <Wrapper>
-      <GroupedInput
-        ref={ref}
-        {...props}
-        onChangeText={handleChangeText}
-        secureTextEntry
-      />
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [props.onChangeText]
+    );
 
-      <Supplement>
-        <Meter meter={meter} />
-      </Supplement>
-    </Wrapper>
-  );
-});
+    return (
+      <Wrapper>
+        <GroupedInput
+          ref={ref}
+          {...props}
+          onChangeText={handleChangeText}
+          secureTextEntry={
+            props.secureTextEntry === undefined ? true : props.secureTextEntry
+          }
+        />
+
+        {props.meterVisible === false ? null : (
+          <Supplement>
+            <Meter meter={meter} />
+          </Supplement>
+        )}
+      </Wrapper>
+    );
+  }
+);
