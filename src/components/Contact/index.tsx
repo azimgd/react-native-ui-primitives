@@ -89,6 +89,7 @@ const Title = styled(SizableText, {
 const SubTitle = styled(SizableText, {
   fontSize: CONTACT_SUBTITLE_FONT_SIZE,
   fontWeight: CONTACT_SUBTITLE_FONT_WEIGHT,
+  color: colors.COLOR_GRAY,
 });
 
 const SubTitleWrapper = styled(XStack, {
