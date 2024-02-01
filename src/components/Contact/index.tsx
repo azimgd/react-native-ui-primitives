@@ -12,11 +12,6 @@ const CONTACT_ICON_HEIGHT = Platform.select({
   android: 56,
   default: 56,
 });
-const CONTACT_WRAPPER_PADDING_HORIZONTAL = Platform.select({
-  ios: 12,
-  android: 12,
-  default: 12,
-});
 const CONTACT_WRAPPER_PADDING_VERTICAL = Platform.select({
   ios: 4,
   android: 4,
@@ -59,7 +54,8 @@ const IconLeft = styled(View, {
   height: CONTACT_ICON_HEIGHT,
   justifyContent: 'center',
   alignItems: 'flex-start',
-  marginHorizontal: 16,
+  marginLeft: 16,
+  marginRight: 12,
 });
 
 const IconRight = styled(View, {
@@ -72,7 +68,6 @@ const IconRight = styled(View, {
 
 const Wrapper = styled(YStack, {
   flex: 1,
-  paddingHorizontal: CONTACT_WRAPPER_PADDING_HORIZONTAL,
   paddingVertical: CONTACT_WRAPPER_PADDING_VERTICAL,
   justifyContent: 'space-between',
 });
