@@ -57,6 +57,7 @@ const IconLeft = styled(View, {
   height: CONTACT_ICON_HEIGHT,
   justifyContent: 'center',
   alignItems: 'flex-start',
+  marginHorizontal: 16,
 });
 
 const IconRight = styled(View, {
@@ -64,6 +65,7 @@ const IconRight = styled(View, {
   height: CONTACT_ICON_HEIGHT,
   justifyContent: 'center',
   alignItems: 'flex-end',
+  marginRight: 16,
 });
 
 const Wrapper = styled(YStack, {

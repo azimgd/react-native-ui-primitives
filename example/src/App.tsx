@@ -13,8 +13,6 @@ import {
   Header,
   HeaderEnlarged,
   Footer,
-  Popup,
-  type PopupRef,
   Attachment,
   Onetime,
   Password,
@@ -39,8 +37,6 @@ const Noop = () => null;
 const noopHandler = () => null;
 
 export default function App() {
-  const popupRef = React.useRef<PopupRef>(null);
-
   return (
     <GestureHandlerRootView style={styles.gesture}>
       <TamaguiProvider config={tamaguiConfig}>
@@ -262,28 +258,31 @@ export default function App() {
                 />
               </XStack>
             </YStack>
+
+            <YStack space="$2" padding="$4">
+              <H4>Contacts</H4>
+
+              <Contact
+                title="bob@gmail.com"
+                subtitle={['4 messages', '3 items']}
+                iconLeft={<Noop />}
+                iconRight={<Text color="$blue10">▶️</Text>}
+              />
+              <Contact
+                title="bob@gmail.com"
+                subtitle={['4 messages', '3 items']}
+                iconLeft={<Noop />}
+                iconRight={<Text color="$blue10">▶️</Text>}
+              />
+              <Contact
+                title="bob@gmail.com"
+                subtitle={['4 messages', '3 items']}
+                iconLeft={<Noop />}
+                iconRight={<Text color="$blue10">▶️</Text>}
+              />
+            </YStack>
           </ScrollView>
         </Window>
-
-        <Popup popupRef={popupRef} header={<Header>Contacts</Header>}>
-          <YStack space="$2" padding="$4">
-            <Contact
-              title="bob@gmail.com"
-              subtitle={['4 messages', '3 items']}
-              iconLeft={<Noop />}
-            />
-            <Contact
-              title="bob@gmail.com"
-              subtitle={['4 messages', '3 items']}
-              iconLeft={<Noop />}
-            />
-            <Contact
-              title="bob@gmail.com"
-              subtitle={['4 messages', '3 items']}
-              iconLeft={<Noop />}
-            />
-          </YStack>
-        </Popup>
       </TamaguiProvider>
     </GestureHandlerRootView>
   );
