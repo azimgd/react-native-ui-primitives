@@ -2,6 +2,7 @@ import React, { type PropsWithChildren } from 'react';
 import { Platform } from 'react-native';
 import { SizableText, View, XStack, YStack, styled } from 'tamagui';
 import * as colors from '../colors';
+import type { PressableProps } from 'react-native';
 
 /**
  * Button props
@@ -50,6 +51,7 @@ type CustomContactProps = {
   subtitle: (string | JSX.Element)[];
   iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
+  onPress?: PressableProps['onPress'];
 };
 
 const IconLeft = styled(View, {
@@ -100,7 +102,7 @@ const SubTitleWrapper = styled(XStack, {
 
 export const Contact = (props: PropsWithChildren<CustomContactProps>) => {
   return (
-    <XStack>
+    <XStack onPress={props.onPress}>
       {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
       <Bordered>
