@@ -1,7 +1,6 @@
 import React, { type PropsWithChildren } from 'react';
 import type { PressableProps } from 'react-native';
-import type { ImageProps } from 'react-native';
-import { Platform, ActivityIndicator } from 'react-native';
+import { Platform, ActivityIndicator, type ImageURISource } from 'react-native';
 import { Image, View, styled } from 'tamagui';
 import * as colors from '../colors';
 
@@ -32,7 +31,8 @@ const ATTACHMENT_ACTION_PADDING = Platform.select({
 type AttachmentProps = {
   loading?: boolean;
   onActionPress: PressableProps['onPress'];
-} & ImageProps;
+  source: ImageURISource;
+};
 
 const Wrapper = styled(View, {
   width: ATTACHMENT_HEIGHT + ATTACHMENT_ACTION_PADDING,
@@ -41,11 +41,11 @@ const Wrapper = styled(View, {
   position: 'relative',
 });
 
-const Content = styled(Image, {
-  source: { uri: '' },
+const ContentWrapper = styled(View, {
   width: ATTACHMENT_HEIGHT,
   height: ATTACHMENT_HEIGHT,
   borderRadius: ATTACHMENT_BORDER_RADIUS,
+  overflow: 'hidden',
 });
 
 const Action = styled(View, {
@@ -80,7 +80,15 @@ const Activity = styled(View, {
 export const Attachment = (props: PropsWithChildren<AttachmentProps>) => {
   return (
     <Wrapper>
-      <Content source={props.source} />
+      <ContentWrapper>
+        <Image
+          source={{
+            width: ATTACHMENT_HEIGHT,
+            height: ATTACHMENT_HEIGHT,
+            ...props.source,
+          }}
+        />
+      </ContentWrapper>
 
       <Action onPress={props.onActionPress}>
         <Minus />
