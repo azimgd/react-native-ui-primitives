@@ -31,7 +31,7 @@ const ATTACHMENT_ACTION_PADDING = Platform.select({
 type AttachmentProps = {
   loading?: boolean;
   onActionPress: PressableProps['onPress'];
-  source: ImageURISource;
+  source?: ImageURISource;
 };
 
 const Wrapper = styled(View, {
@@ -81,13 +81,17 @@ export const Attachment = (props: PropsWithChildren<AttachmentProps>) => {
   return (
     <Wrapper>
       <ContentWrapper>
-        <Image
-          source={{
-            width: ATTACHMENT_HEIGHT,
-            height: ATTACHMENT_HEIGHT,
-            ...props.source,
-          }}
-        />
+        {props.source ? (
+          <Image
+            source={{
+              width: ATTACHMENT_HEIGHT,
+              height: ATTACHMENT_HEIGHT,
+              ...props.source,
+            }}
+          />
+        ) : (
+          props.children
+        )}
       </ContentWrapper>
 
       <Action onPress={props.onActionPress}>
