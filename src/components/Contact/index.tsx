@@ -45,7 +45,9 @@ type CustomContactProps = {
   title: string | JSX.Element;
   subtitle: (string | JSX.Element)[];
   iconLeft?: JSX.Element;
+  iconLeftOnPress?: PressableProps['onPress'];
   iconRight?: JSX.Element;
+  iconRightOnPress?: PressableProps['onPress'];
   onPress?: PressableProps['onPress'];
 };
 
@@ -98,7 +100,9 @@ const SubTitleWrapper = styled(XStack, {
 export const Contact = (props: PropsWithChildren<CustomContactProps>) => {
   return (
     <XStack onPress={props.onPress}>
-      {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
+      {props.iconLeft ? (
+        <IconLeft onPress={props.iconLeftOnPress}>{props.iconLeft}</IconLeft>
+      ) : null}
 
       <Bordered>
         <Wrapper>
@@ -111,7 +115,11 @@ export const Contact = (props: PropsWithChildren<CustomContactProps>) => {
           </SubTitleWrapper>
         </Wrapper>
 
-        {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
+        {props.iconRight ? (
+          <IconRight onPress={props.iconRightOnPress}>
+            {props.iconRight}
+          </IconRight>
+        ) : null}
       </Bordered>
     </XStack>
   );

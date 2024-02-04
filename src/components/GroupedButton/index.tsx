@@ -3,6 +3,7 @@ import { Platform, type ViewProps } from 'react-native';
 import { Button as TamaguiButton, View, XStack, styled } from 'tamagui';
 import type { GetProps } from 'tamagui';
 import * as colors from '../colors';
+import type { PressableProps } from 'react-native';
 
 /**
  * Button props
@@ -34,6 +35,7 @@ const GROUPED_BUTTON_PADDING_HORIZONTAL = Platform.select({
 type CustomButtonProps = {
   androidIconLeft?: JSX.Element;
   iconRight?: JSX.Element;
+  iconRightOnPress?: PressableProps['onPress'];
 };
 
 export type ButtonProps = GetProps<typeof TamaguiButton> & CustomButtonProps;
@@ -97,7 +99,11 @@ const StyledTamaguiButton = TamaguiButton.styleable<CustomButtonProps>(
       ) : null}
 
       <TamaguiButton ref={ref} {...props} unstyled flex={1} />
-      {props.iconRight ? <IconRight>{props.iconRight}</IconRight> : null}
+      {props.iconRight ? (
+        <IconRight onPress={props.iconRightOnPress}>
+          {props.iconRight}
+        </IconRight>
+      ) : null}
     </Wrapper>
   )
 );

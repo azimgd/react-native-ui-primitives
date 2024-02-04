@@ -98,7 +98,7 @@ export const GroupedSwitch = CustomSwitch.styleable<CustomSwitchProps>(
       <Label>{children}</Label>
 
       <CustomSwitch ref={ref} {...props}>
-        <CustomSwitch.Thumb animation="quick" />
+        <CustomSwitch.Thumb animation="100ms" />
       </CustomSwitch>
     </Wrapper>
   )
