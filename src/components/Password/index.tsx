@@ -10,6 +10,9 @@ type CustomPassword = {
 
 export const Password = Input.styleable<CustomPassword>((props, ref) => {
   const [meter, setMeter] = React.useState<Result<any>>();
+  const [meterVisible, setMeterVisible] = React.useState<boolean>(
+    !!props.meterVisible
+  );
 
   /**
    * Password strength meter
@@ -17,6 +20,8 @@ export const Password = Input.styleable<CustomPassword>((props, ref) => {
   const handleChangeText = React.useCallback(
     (text: string) => {
       setMeter(passwordStrength(text));
+
+      setMeterVisible(text.length > 0);
 
       if (props.onChangeText) {
         props.onChangeText(text);
@@ -36,7 +41,9 @@ export const Password = Input.styleable<CustomPassword>((props, ref) => {
         props.secureTextEntry === undefined ? true : props.secureTextEntry
       }
       supplement={
-        props.meterVisible === false ? undefined : <Meter meter={meter} />
+        props.meterVisible === false || !meterVisible ? undefined : (
+          <Meter meter={meter} />
+        )
       }
     />
   );

@@ -33,6 +33,9 @@ type CustomGroupedInput = {
 export const GroupedPassword = GroupedInput.styleable<CustomGroupedInput>(
   (props, ref) => {
     const [meter, setMeter] = React.useState<Result<any>>();
+    const [meterVisible, setMeterVisible] = React.useState<boolean>(
+      !!props.meterVisible
+    );
 
     /**
      * Password strength meter
@@ -40,6 +43,8 @@ export const GroupedPassword = GroupedInput.styleable<CustomGroupedInput>(
     const handleChangeText = React.useCallback(
       (text: string) => {
         setMeter(passwordStrength(text));
+
+        setMeterVisible(text.length > 0);
 
         if (props.onChangeText) {
           props.onChangeText(text);
@@ -61,7 +66,7 @@ export const GroupedPassword = GroupedInput.styleable<CustomGroupedInput>(
           }
         />
 
-        {props.meterVisible === false ? null : (
+        {props.meterVisible === false || !meterVisible ? null : (
           <Supplement>
             <Meter meter={meter} />
           </Supplement>
