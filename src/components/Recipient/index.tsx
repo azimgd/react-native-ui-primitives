@@ -65,11 +65,13 @@ export const Recipient = Inline.styleable<RecipientProps>((props, ref) => {
    * Editable chip, clear chip and focus input when pressed
    */
   const handleRecipientPress = React.useCallback(() => {
+    if (props.disabled) return;
+
     setRecipient((state) => {
       setValue(state);
       return undefined;
     });
-  }, []);
+  }, [props.disabled]);
 
   /**
    * Email / Phone number formatter as you type
