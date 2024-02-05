@@ -31,7 +31,7 @@ const Bar = styled(View, {
         backgroundColor: colors.COLOR_DANGER,
       },
       1: {
-        backgroundColor: 'yellow',
+        backgroundColor: '#F49E4C',
       },
       2: {
         backgroundColor: colors.COLOR_GREEN,
