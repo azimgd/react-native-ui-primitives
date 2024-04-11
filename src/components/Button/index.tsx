@@ -17,9 +17,9 @@ const BUTTON_FONT_SIZE = Platform.select({
   default: 17,
 });
 const BUTTON_FONT_WEIGHT = Platform.select({
-  ios: '600',
+  ios: '500',
   android: '500',
-  default: '600',
+  default: '500',
 });
 const BUTTON_BORDER_RADIUS = Platform.select({
   ios: 12,

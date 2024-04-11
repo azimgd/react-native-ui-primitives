@@ -117,7 +117,7 @@ export const Label = styled(Text, {
   variants: {
     active: {
       true: {
-        fontWeight: '600',
+        fontWeight: '500',
       },
     },
   },
