@@ -119,13 +119,13 @@ export default function App() {
 
               <GroupedContainer title="Preferences">
                 <GroupedButton
-                  androidIconLeft={<Text color="$blue10">▶️</Text>}
+                  iconLeft={<Text color="$blue10">▶️</Text>}
                   paint="primary"
                 >
                   Settings
                 </GroupedButton>
                 <GroupedButton
-                  androidIconLeft={<Text color="$blue10">▶️</Text>}
+                  iconLeft={<Text color="$blue10">▶️</Text>}
                   paint="danger"
                 >
                   Delete account
@@ -154,13 +154,13 @@ export default function App() {
 
               <GroupedContainer>
                 <GroupedSwitch
-                  androidIconLeft={<Text color="$blue10">▶️</Text>}
+                  iconLeft={<Text color="$blue10">▶️</Text>}
                   checked
                 >
                   Checked
                 </GroupedSwitch>
                 <GroupedSwitch
-                  androidIconLeft={<Text color="$blue10">▶️</Text>}
+                  iconLeft={<Text color="$blue10">▶️</Text>}
                   checked={false}
                 >
                   Unchecked

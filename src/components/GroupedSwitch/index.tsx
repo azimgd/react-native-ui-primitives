@@ -19,7 +19,7 @@ const GROUPED_SWITCH_THUMB_COLOR = Platform.select({
 });
 const GROUPED_SWITCH_HEIGHT = Platform.select({
   ios: 44,
-  android: 56,
+  android: 52,
   default: 44,
 });
 const GROUPED_SWITCH_FONT_SIZE = Platform.select({
@@ -42,7 +42,7 @@ const GROUPED_SWITCH_PADDING_HORIZONTAL = Platform.select({
  * Per-Platform config
  */
 type CustomSwitchProps = {
-  androidIconLeft?: JSX.Element;
+  iconLeft?: JSX.Element;
 };
 
 export type ButtonProps = GetProps<typeof Switch> & CustomSwitchProps;
@@ -61,7 +61,7 @@ const Label = styled(SizableText, {
 });
 
 const IconLeft = styled(View, {
-  minWidth: GROUPED_SWITCH_HEIGHT,
+  minWidth: 44,
   height: GROUPED_SWITCH_HEIGHT,
   justifyContent: 'center',
   alignItems: 'flex-start',
@@ -91,9 +91,7 @@ CustomSwitch.Thumb = styled(Switch.Thumb, {
 export const GroupedSwitch = CustomSwitch.styleable<CustomSwitchProps>(
   ({ children, ...props }, ref) => (
     <Wrapper>
-      {props.androidIconLeft && Platform.OS === 'android' ? (
-        <IconLeft>{props.androidIconLeft}</IconLeft>
-      ) : null}
+      {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
       <Label>{children}</Label>
 

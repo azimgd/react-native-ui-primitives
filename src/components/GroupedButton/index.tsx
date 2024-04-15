@@ -10,7 +10,7 @@ import type { PressableProps } from 'react-native';
  */
 const GROUPED_BUTTON_HEIGHT = Platform.select({
   ios: 44,
-  android: 56,
+  android: 52,
   default: 44,
 });
 const GROUPED_BUTTON_FONT_SIZE = Platform.select({
@@ -33,7 +33,7 @@ const GROUPED_BUTTON_PADDING_HORIZONTAL = Platform.select({
  * Per-Platform config
  */
 type CustomButtonProps = {
-  androidIconLeft?: JSX.Element;
+  iconLeft?: JSX.Element;
   iconRight?: JSX.Element;
   iconRightOnPress?: PressableProps['onPress'];
 };
@@ -78,7 +78,7 @@ const Wrapper = styled(XStack, {
 });
 
 const IconLeft = styled(View, {
-  minWidth: GROUPED_BUTTON_HEIGHT,
+  minWidth: 44,
   height: GROUPED_BUTTON_HEIGHT,
   justifyContent: 'center',
   alignItems: 'flex-start',
@@ -94,9 +94,7 @@ const IconRight = styled(View, {
 const StyledTamaguiButton = TamaguiButton.styleable<CustomButtonProps>(
   (props, ref) => (
     <Wrapper>
-      {props.androidIconLeft && Platform.OS === 'android' ? (
-        <IconLeft>{props.androidIconLeft}</IconLeft>
-      ) : null}
+      {props.iconLeft ? <IconLeft>{props.iconLeft}</IconLeft> : null}
 
       <TamaguiButton ref={ref} {...props} unstyled flex={1} />
       {props.iconRight ? (
