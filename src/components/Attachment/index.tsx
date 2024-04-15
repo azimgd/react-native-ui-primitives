@@ -30,7 +30,7 @@ const ATTACHMENT_ACTION_PADDING = Platform.select({
 
 type AttachmentProps = {
   loading?: boolean;
-  onActionPress: PressableProps['onPress'];
+  onActionPress?: PressableProps['onPress'];
   source?: ImageURISource;
 };
 
@@ -94,9 +94,11 @@ export const Attachment = (props: PropsWithChildren<AttachmentProps>) => {
         )}
       </ContentWrapper>
 
-      <Action onPress={props.onActionPress}>
-        <Minus />
-      </Action>
+      {props.onActionPress ? (
+        <Action onPress={props.onActionPress}>
+          <Minus />
+        </Action>
+      ) : null}
 
       {props.loading ? (
         <Activity>
