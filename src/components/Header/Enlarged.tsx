@@ -12,10 +12,10 @@ const HEADER_ENLARGED_FONT_SIZE = Platform.select({
   android: 28,
   default: 34,
 });
-const HEADER_ENLARGED_FONT_WEIGHT = Platform.select<'500' | '400'>({
-  ios: '500',
+const HEADER_ENLARGED_FONT_WEIGHT = Platform.select<'600' | '400'>({
+  ios: '600',
   android: '400',
-  default: '500',
+  default: '600',
 });
 const HEADER_ENLARGED_LINE_HEIGHT = Platform.select({
   ios: 41,

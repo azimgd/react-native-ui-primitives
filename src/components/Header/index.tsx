@@ -26,10 +26,10 @@ const HEADER_TITLE_FONT_SIZE = Platform.select({
   android: 20,
   default: 17,
 });
-const HEADER_TITLE_FONT_WEIGHT = Platform.select<'500' | '500'>({
-  ios: '500',
+const HEADER_TITLE_FONT_WEIGHT = Platform.select<'600' | '500'>({
+  ios: '600',
   android: '500',
-  default: '500',
+  default: '600',
 });
 
 const HEADER_WRAPPER_ALIGN = Platform.select<'center' | 'flex-start'>({
