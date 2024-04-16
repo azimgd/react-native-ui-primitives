@@ -104,7 +104,7 @@ export const GroupedContainer = styled(StyledYStack, {
 
   separator: Platform.select({
     android: undefined,
-    default: <Separator />,
+    default: <Separator height={1} backgroundColor="#3C3C435C" opacity={0.3} />,
   }),
   ...(config as TextProps),
 });
