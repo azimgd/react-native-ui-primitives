@@ -79,7 +79,7 @@ export const Recipient = Inline.styleable<RecipientProps>((props, ref) => {
   const handleChangeText = React.useCallback(
     (text: string, trigger?: boolean) => {
       const email = validator.email(text);
-      const phone = validator.phone(text);
+      const phone = validator.phone(`+${text.replace('+', '')}`);
 
       if (email && trigger) {
         setRecipient(() => {
