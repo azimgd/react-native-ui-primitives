@@ -77,24 +77,24 @@ export const Recipient = Inline.styleable<RecipientProps>((props, ref) => {
    * Email / Phone number formatter as you type
    */
   const handleChangeText = React.useCallback(
-    (text: string) => {
+    (text: string, trigger?: boolean) => {
       const email = validator.email(text);
       const phone = validator.phone(text);
 
-      if (email && text.includes(' ')) {
+      if (email && trigger) {
         setRecipient(() => {
           setValue(text);
-          const recipient = email.replace(' ', '');
+          const recipient = email.replaceAll(' ', '');
 
           if (props.onRecipient)
             props.onRecipient({ recipient, type: 'EMAIL' });
 
           return recipient;
         });
-      } else if (phone && text.includes(' ')) {
+      } else if (phone && trigger) {
         setRecipient(() => {
           setValue(text);
-          const recipient = phone.replace(' ', '');
+          const recipient = phone.replaceAll(' ', '');
 
           if (props.onRecipient)
             props.onRecipient({ recipient, type: 'PHONE' });
@@ -125,7 +125,7 @@ export const Recipient = Inline.styleable<RecipientProps>((props, ref) => {
         props.onBlur(event);
       }
 
-      handleChangeText(value + ' ');
+      handleChangeText(value || '', true);
     },
     [handleChangeText, props, value]
   );
